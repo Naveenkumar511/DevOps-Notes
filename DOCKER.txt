@@ -1,0 +1,1416 @@
+Docker Image Commands
+--------------------------------
+
+docker pull <image>             		 # Download image from registry
+docker build -t <name>:<tag> .   	# Build image from Dockerfile
+docker images                   		 # List images
+docker rmi <image>               		# Remove image
+docker tag <image> <new_name>    # Tag image
+docker push <image>              	# Push image to registry
+docker image prune               		# Remove unused images
+
+Container Commands
+----------------------------
+
+
+docker run <image>                       # Run container
+docker run -it <image> bash              # Run interactive container
+docker run -d <image>                    # Run in detached mode
+docker run -p 8080:80 <image>            # Port mapping
+docker run --name mycontainer <image>    # Name container
+docker ps                                # List running containers
+docker ps -a                             # List all containers
+docker stop <container>                  # Stop container
+docker start <container>                 # Start container
+docker restart <container>               # Restart container
+docker rm <container>                    # Remove container
+docker exec -it <container> bash         # Exec into running container
+docker logs <container>                  # View logs
+docker inspect <container>               # Detailed info
+docker stats                             # Live resource usage
+
+
+
+
+TOPIC 1 : WHAT IS A CONTAINER?
+====================================================================
+
+What is a Container?
+--------------------
+
+A container is a lightweight software package that contains everything
+required to run an application.
+
+A container includes:
+1. Application Code
+2. Runtime
+3. Libraries
+4. Dependencies
+5. Configuration Files
+
+Since everything is packaged together, the application runs the same
+way on any computer.
+
+--------------------------------------------------------------------
+
+Simple Definition
+-----------------
+
+A container is a package that contains an application and everything
+it needs to run.
+
+OR
+
+Container = Application + Dependencies
+
+--------------------------------------------------------------------
+
+Why Do We Need Containers?
+--------------------------
+
+Before containers, developers used to face many problems.
+
+Example:
+
+Developer writes an application on his laptop.
+
+            |
+            V
+
+Application works perfectly.
+
+            |
+            V
+
+Application is moved to Testing Server.
+
+            |
+            V
+
+Application fails.
+
+Reason:
+- Different Operating System
+- Different Software Version
+- Missing Libraries
+- Missing Dependencies
+- Missing Configuration
+
+The tester says:
+
+"It is not working."
+
+Developer replies:
+
+"It works on my machine."
+
+Containers solve this problem.
+
+The application behaves exactly the same on every system.
+
+--------------------------------------------------------------------
+
+Container Structure
+-------------------
+
++--------------------------------+
+|        Application             |
++--------------------------------+
+| Runtime                        |
++--------------------------------+
+| Libraries                      |
++--------------------------------+
+| Dependencies                   |
++--------------------------------+
+| Configuration                  |
++--------------------------------+
+
+Everything is packaged together.
+
+--------------------------------------------------------------------
+
+Features of Containers
+----------------------
+
+1. Lightweight
+2. Fast
+3. Portable
+4. Easy to Deploy
+5. Uses Less Memory
+6. Starts Within Seconds
+7. Easy to Scale
+8. Easy to Share
+9. Consistent Across Environments
+
+--------------------------------------------------------------------
+
+
+How Containers Work
+-------------------
+
+                 +-------------------+
+                 |  Application      |
+                 +-------------------+
+                           |
+                           V
+                 +-------------------+
+                 |    Container      |
+                 +-------------------+
+                           |
+                           V
+                 +-------------------+
+                 | Docker Engine     |
+                 +-------------------+
+                           |
+                           V
+                 +-------------------+
+                 | Host Operating OS |
+                 +-------------------+
+                           |
+                           V
+                 +-------------------+
+                 | Physical Server   |
+                 +-------------------+
+
+--------------------------------------------------------------------
+
+Important Points
+----------------
+
+* Containers share the Host Operating System Kernel.
+* Containers do NOT contain a full Operating System.
+* Containers are lightweight.
+* Containers start very quickly.
+* Multiple containers can run on one server.
+
+--------------------------------------------------------------------
+
+=============================================================
+
+====================================================================
+TOPIC 2 : DIFFERENCE BETWEEN CONTAINER AND VIRTUAL MACHINE (VM)
+====================================================================
+
+Before learning Docker, it is important to understand the difference
+between a Virtual Machine (VM) and a Container.
+
+--------------------------------------------------------------------
+
+What is a Virtual Machine (VM)?
+-------------------------------
+
+A Virtual Machine (VM) is a software-based computer that behaves like
+a physical computer.
+
+A VM contains:
+- Operating System
+- Application
+- Libraries
+- Dependencies
+
+Each VM has its own Operating System.
+
+Example:
+A Windows laptop can run multiple Virtual Machines such as:
+- Ubuntu VM
+- CentOS VM
+- Windows Server VM
+
+Each VM runs independently.
+
+--------------------------------------------------------------------
+
+What is a Container?
+--------------------
+
+A Container is a lightweight package that contains:
+- Application
+- Libraries
+- Dependencies
+
+Containers DO NOT have their own Operating System.
+
+Instead, all containers share the Host Operating System Kernel.
+
+--------------------------------------------------------------------
+
+Virtual Machine Architecture
+----------------------------
+
+                    Physical Server
+                           |
+                    Host Operating System
+                           |
+                     Hypervisor
+          _________________________________
+         |               |                 |
+         |               |                 |
+      VM 1            VM 2             VM 3
+   -----------     -----------      -----------
+   Guest OS        Guest OS         Guest OS
+   Application     Application      Application
+
+Each Virtual Machine has its own Operating System.
+
+--------------------------------------------------------------------
+
+Container Architecture
+-----------------------
+
+                    Physical Server
+                           |
+                    Host Operating System
+                           |
+                     Docker Engine
+          _________________________________
+         |               |                 |
+         |               |                 |
+    Container 1     Container 2      Container 3
+   ------------    ------------     ------------
+   Application     Application      Application
+
+All containers share the Host Operating System.
+
+--------------------------------------------------------------------
+
+VM vs Container
+---------------
+
+Feature                 Virtual Machine          Container
+----------------------------------------------------------------
+Operating System        Own OS                  Shares Host OS
+Size                    Large (GBs)             Small (MBs)
+Startup Time            Minutes                 Seconds
+Speed                   Slower                  Faster
+Memory Usage            High                    Low
+Performance             Moderate                High
+Boot Time               Slow                    Very Fast
+Isolation               High                    High
+Portability             Good                    Excellent
+Resource Usage          More                    Less
+
+--------------------------------------------------------------------
+====================================================================
+TOPIC 3 : CONTAINER ENGINES
+====================================================================
+
+What is a Container Engine?
+---------------------------
+
+A Container Engine is software that is used to create, run, stop,
+delete, and manage containers.
+
+Without a Container Engine, containers cannot run.
+
+Think of it like this:
+
+Application
+      |
+      V
+Container
+      |
+      V
+Container Engine
+      |
+      V
+Operating System
+
+--------------------------------------------------------------------
+
+Simple Definition
+
+A Container Engine is software that manages containers.
+
+--------------------------------------------------------------------
+
+Responsibilities of a Container Engine
+
+* Download Images
+* Create Containers
+* Start Containers
+* Stop Containers
+* Restart Containers
+* Delete Containers
+* Manage Networks
+* Manage Volumes
+
+--------------------------------------------------------------------
+
+Popular Container Engines
+
+1. Docker
+2. Podman
+3. containerd
+4. CRI-O
+5. LXC (Linux Containers)
+6. OpenVZ
+7. rkt (CoreOS Rocket - Deprecated)
+
+--------------------------------------------------------------------
+
+===================================================================
+
+====================================================================
+TOPIC 4 : WHAT IS DOCKER?
+====================================================================
+
+What is Docker?
+---------------
+
+Docker is an open-source containerization platform used to build,
+package, distribute, and run applications inside containers.
+
+Docker helps developers package an application along with all its
+dependencies so that it runs consistently on any system.
+
+Simple Definition
+-----------------
+
+Docker is a software that allows us to create, run, manage, and deploy
+containers.
+
+OR
+
+Docker = Platform to Build + Run + Manage Containers
+
+--------------------------------------------------------------------
+
+What Can Docker Do?
+-------------------
+
+Docker can:
+
+✓ Create Containers
+✓ Run Containers
+✓ Stop Containers
+✓ Restart Containers
+✓ Delete Containers
+✓ Build Images
+✓ Download Images
+✓ Push Images to Docker Hub
+✓ Share Applications
+
+--------------------------------------------------------------------
+
+How Docker Works
+----------------
+
+Developer
+    |
+    V
+Writes Application
+    |
+    V
+Creates Docker Image
+    |
+    V
+Runs Docker Container
+    |
+    V
+Application Starts
+
+--------------------------------------------------------------------
+
+Docker Workflow
+---------------
+
+Step 1
+Developer writes application.
+
+        |
+
+Step 2
+Create Dockerfile.
+
+        |
+
+Step 3
+Build Docker Image.
+
+        |
+
+Step 4
+Run Docker Container.
+
+        |
+
+Step 5
+Application Starts.
+
+--------------------------------------------------------------------
+
+Docker Architecture
+-------------------
+
+                    Docker Architecture
+
+                 +----------------------+
+                 |    Docker Client     |
+                 +----------------------+
+                           |
+                    Docker Commands
+                           |
+                           V
+                 +----------------------+
+                 |    Docker Daemon     |
+                 +----------------------+
+                  |       |        |
+                  |       |        |
+             Images   Containers  Networks
+                  |
+                  |
+           Docker Registry
+          (Docker Hub)
+
+--------------------------------------------------------------------
+
+Components of Docker
+--------------------
+
+1. Docker Client
+
+The Docker Client is where users execute Docker commands.
+
+Example:
+
+docker run
+
+docker ps
+
+docker images
+
+docker build
+
+The client sends commands to the Docker Daemon.
+
+--------------------------------------------------------------------
+
+2. Docker Daemon
+
+The Docker Daemon is the background service that performs Docker
+operations.
+
+Responsibilities:
+
+- Build Images
+- Run Containers
+- Stop Containers
+- Remove Containers
+- Manage Networks
+- Manage Volumes
+
+--------------------------------------------------------------------
+
+3. Docker Image
+
+A Docker Image is a blueprint used to create containers.
+
+Example:
+
+ubuntu
+
+nginx
+
+mysql
+
+redis
+
+python
+
+--------------------------------------------------------------------
+
+4. Docker Container
+
+A running instance of a Docker Image is called a Container.
+
+Image
+  |
+docker run
+  |
+Container
+
+--------------------------------------------------------------------
+
+5. Docker Registry
+
+A Docker Registry stores Docker Images.
+
+Popular Registries:
+
+- Docker Hub
+- Amazon ECR
+- Azure Container Registry
+- Google Artifact Registry
+- GitHub Container Registry
+
+--------------------------------------------------------------------
+
+Docker Life Cycle
+-----------------
+
+Dockerfile
+     |
+     V
+Docker Image
+     |
+     V
+Docker Container
+     |
+     V
+Application Running
+
+--------------------------------------------------------------------
+
+
+
+
+Docker Volume 
+-------------------
+What is a Docker volume?
+
+A volume is a special storage area managed by Docker that exists outside the container’s filesystem
+
+
+Why use volumes?
+	Persist data (databases, uploads, logs)
+	Share data between containers
+	Avoid bloating container images
+	Improve performance vs bind mounts (in many cases)
+
+Types of storage in Docker
+
+1. Volumes (recommended
+	Managed by Docker
+	Stored in /var/lib/docker/volumes/ (Linux)
+	Easy to back up and move
+
+2. Bind mounts
+	Map a host directory directly
+	Example: ./app:/usr/src/app
+	More control, but less portable
+
+3. tmpfs mounts
+	Stored in memory only
+	Good for sensitive or temporary data
+
+Docker volume commands
+--------------------------------
+docker volume create name		-	Create volume
+docker volume ls				- 	List volumes
+docker volume inspect name		-	Show details
+docker volume rm name			-	Remove volume
+docker volume prune			-	Remove unused volumes
+docker run -v vol:/path image		-	Mount volume
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is Docker Network?
+-----------------------
+Docker Network is a feature that allows Docker containers to communicate with each other, the Docker host, and external networks.
+
+It provides:
+- Container-to-container communication
+- Container-to-host communication
+- Internet access
+- Network isolation
+
+Without a network, containers cannot communicate with each other.
+
+Example:
+--------
+Container A (Web Server)
+        │
+        │
+Docker Network
+        │
+        │
+Container B (Database)
+
+The web server communicates with the database through the Docker network.
+
+=========================================
+
+Why Do We Need Docker Network?
+------------------------------
+
+- Communication between containers
+- Secure container isolation
+- Access to the internet
+- Connect containers to external services
+- Easy application deployment
+
+=========================================
+
+Types of Docker Networks
+========================
+
+1. Bridge Network (Default)
+---------------------------
+
+Definition:
+-----------
+Bridge is the default network created by Docker. It allows containers running on the same Docker host to communicate.
+
+Example:
+--------
+Container A
+      │
+      │
+  Bridge Network
+      │
+      │
+Container B
+
+Command:
+--------
+docker network ls
+
+Create bridge network:
+docker network create mybridge
+
+Run container:
+docker run --network mybridge nginx
+
+Use Case:
+---------
+- Single server
+- Development environment
+- Multiple containers on one machine
+
+Advantages:
+-----------
+- Default network
+- Easy to configure
+- Container isolation
+
+
+=========================================
+
+2. Host Network
+---------------
+
+Definition:
+-----------
+In Host network mode, the container shares the host machine's network.
+
+No separate container IP is assigned.
+
+Example:
+--------
+
+Host Machine
+    │
+    ├── Nginx Container
+    ├── Apache Container
+
+All use the host network.
+
+Command:
+--------
+docker run --network host nginx
+
+Advantages:
+-----------
+- Faster performance
+- No NAT
+- Less network overhead
+
+Disadvantages:
+--------------
+- Less isolation
+- Port conflicts may occur
+
+Use Case:
+---------
+High-performance applications.
+
+
+=========================================
+
+3. None Network
+---------------
+
+Definition:
+-----------
+The container has no network connectivity.
+
+No internet.
+No communication.
+
+Command:
+--------
+docker run --network none nginx
+
+Advantages:
+-----------
+- Maximum isolation
+- High security
+
+Use Case:
+---------
+Testing or highly secure environments.
+
+
+=========================================
+
+4. Overlay Network
+------------------
+
+Definition:
+-----------
+Overlay network connects containers running on different Docker hosts.
+
+Used with Docker Swarm.
+
+Example:
+--------
+
+Host 1
+  │
+Container A
+      │
+ Overlay Network
+      │
+Container B
+  │
+Host 2
+
+Command:
+--------
+docker network create -d overlay myoverlay
+
+Advantages:
+-----------
+- Multi-host communication
+- Cluster networking
+- Secure communication
+
+Use Case:
+---------
+Docker Swarm clusters.
+
+
+=========================================
+
+5. Macvlan Network
+------------------
+
+Definition:
+-----------
+Assigns a real MAC address and IP address to each container.
+
+Containers appear as physical devices on the network.
+
+Example:
+--------
+
+Router
+   │
+   ├── Container A
+   ├── Container B
+   ├── Laptop
+
+All have separate IP addresses.
+
+Command:
+--------
+docker network create -d macvlan ...
+
+Advantages:
+-----------
+- Direct network access
+- Better performance
+- Physical network visibility
+
+Use Case:
+---------
+Legacy applications and network appliances.
+
+====================================================================
+
+What is a Dockerfile?
+---------------------
+
+A Dockerfile is a text file that contains instructions for Docker to
+build a Docker Image.
+
+Simple Definition
+-----------------
+
+Dockerfile = Recipe to create a Docker Image.
+
+OR
+
+Dockerfile tells Docker what to do step by step.
+
+--------------------------------------------------------------------
+
+Why Do We Need a Dockerfile?
+----------------------------
+
+Without Dockerfile
+
+Every time you create a container, you have to:
+
+1. Install Operating System
+2. Install Software
+3. Install Dependencies
+4. Copy Application
+5. Start Application
+
+This takes time and can lead to mistakes.
+
+With Dockerfile
+
+Write the steps once.
+
+Docker automatically performs all the steps and creates an image.
+
+--------------------------------------------------------------------
+
+Example
+-------
+
+Imagine making a cup of tea.
+
+Recipe:
+
+1. Boil water
+2. Add tea powder
+3. Add milk
+4. Add sugar
+
+Anyone following the recipe will make the same tea.
+
+Similarly,
+
+A Dockerfile is a recipe for creating a Docker Image.
+
+--------------------------------------------------------------------
+
+Dockerfile Workflow
+-------------------
+
+Dockerfile
+     |
+     V
+docker build
+     |
+     V
+Docker Image
+     |
+     V
+docker run
+     |
+     V
+Docker Container
+
+--------------------------------------------------------------------
+
+Dockerfile Rules
+----------------
+
+1. File name must be:
+
+Dockerfile
+
+2. No file extension.
+
+Correct
+
+Dockerfile
+
+Wrong
+
+Dockerfile.txt
+
+dockerfile
+
+DockerFile
+
+--------------------------------------------------------------------
+
+Basic Dockerfile Instructions
+-----------------------------
+
+Instruction    Purpose
+
+FROM           Base Image
+
+WORKDIR        Working Folder
+
+COPY           Copy Files
+
+RUN            Install Software
+
+EXPOSE         Application Port
+
+CMD            Start Application
+
+--------------------------------------------------------------------
+
+1. FROM
+--------
+
+Purpose
+
+Specifies the base image.
+
+Syntax
+
+FROM image_name
+
+Example
+
+FROM ubuntu
+
+Example
+
+FROM python:3.12
+
+Docker starts with this image.
+
+--------------------------------------------------------------------
+
+2. WORKDIR
+-----------
+
+Purpose
+
+Creates and moves into a working directory.
+
+Syntax
+
+WORKDIR /app
+
+Example
+
+WORKDIR /app
+
+Now Docker performs all operations inside the /app folder.
+
+--------------------------------------------------------------------
+
+3. COPY
+--------
+
+Purpose
+
+Copies files from your computer into the Docker Image.
+
+Syntax
+
+COPY source destination
+
+Example
+
+COPY . .
+
+Meaning
+
+Copy all files from the current folder to the current folder inside
+the image.
+
+--------------------------------------------------------------------
+
+4. RUN
+-------
+
+Purpose
+
+Executes commands while building the image.
+
+Syntax
+
+RUN command
+
+Example
+
+RUN apt update
+
+Example
+
+RUN apt install -y nginx
+
+Example
+
+RUN pip install -r requirements.txt
+
+--------------------------------------------------------------------
+
+5. EXPOSE
+----------
+
+Purpose
+
+Specifies which port the application uses.
+
+Syntax
+
+EXPOSE port_number
+
+Example
+
+EXPOSE 80
+
+Example
+
+EXPOSE 5000
+
+--------------------------------------------------------------------
+
+6. CMD
+-------
+
+Purpose
+
+Specifies the command to run when the container starts.
+
+Syntax
+
+CMD ["command"]
+
+Example
+
+CMD ["python","app.py"]
+
+Example
+
+CMD ["nginx","-g","daemon off;"]
+
+--------------------------------------------------------------------
+
+Simple Dockerfile Example
+-------------------------
+
+FROM ubuntu
+
+RUN apt update
+
+RUN apt install -y nginx
+
+EXPOSE 80
+
+CMD ["nginx","-g","daemon off;"]
+
+Explanation
+
+FROM        -> Download Ubuntu Image
+
+RUN         -> Update Packages
+
+RUN         -> Install Nginx
+
+EXPOSE      -> Nginx Uses Port 80
+
+CMD         -> Start Nginx
+
+--------------------------------------------------------------------
+
+Python Example
+--------------
+
+FROM python:3.12
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python","app.py"]
+
+Explanation
+
+FROM        -> Use Python Image
+
+WORKDIR     -> Create /app Folder
+
+COPY        -> Copy Project Files
+
+RUN         -> Install Python Packages
+
+EXPOSE      -> Application Runs on Port 5000
+
+CMD         -> Start Python Application
+
+--------------------------------------------------------------------
+
+Dockerfile Execution
+--------------------
+
+Step 1
+
+Read FROM
+
+↓
+
+Step 2
+
+Create Base Image
+
+↓
+
+Step 3
+
+Run RUN Commands
+
+↓
+
+Step 4
+
+Copy Files
+
+↓
+
+Step 5
+
+Open Port
+
+↓
+
+Step 6
+
+Save Docker Image
+
+↓
+
+Step 7
+
+Run Container
+
+--------------------------------------------------------------------
+
+Important Points
+----------------
+
+* Docker reads the Dockerfile from top to bottom.
+
+* Every instruction creates a new image layer.
+
+* The Dockerfile is used only to create the image.
+
+* After the image is created, containers are launched from that image.
+
+--------------------------------------------------------------------
+
+
+=====================================================
+
+1. DOCKERFILE
+=============
+
+Definition:
+-----------
+A Dockerfile is a text file that contains instructions to automatically build a Docker image.
+
+It defines:
+- Base image
+- Application files
+- Dependencies
+- Environment
+- Startup command
+
+Workflow:
+---------
+Dockerfile
+      ↓
+docker build
+      ↓
+Docker Image
+      ↓
+docker run
+      ↓
+Docker Container
+
+Example:
+--------
+FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["python","app.py"]
+
+Advantages:
+-----------
+- Automated image creation
+- Consistent environment
+- Easy deployment
+- Version controlled
+- Reusable
+
+
+=====================================================
+
+2. MULTI-STAGE DOCKERFILE
+=========================
+
+Definition:
+-----------
+A Multi-stage Dockerfile uses multiple FROM instructions to separate the build environment from the runtime environment.
+
+Purpose:
+--------
+- Reduce image size
+- Improve security
+- Remove unnecessary build tools
+- Faster deployment
+
+Workflow:
+---------
+
+Stage 1 (Build)
+---------------
+Compile application
+Install dependencies
+
+        ↓
+
+Stage 2 (Runtime)
+-----------------
+Copy only required files
+Run application
+
+Only the final stage becomes the Docker image.
+
+Example:
+--------
+
+# Build Stage
+FROM maven:3.9-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY . .
+
+RUN mvn clean package
+
+
+# Runtime Stage
+FROM eclipse-temurin:17
+
+WORKDIR /app
+
+COPY --from=build /app/target/app.jar app.jar
+
+CMD ["java","-jar","app.jar"]
+
+Advantages:
+-----------
+- Smaller images
+- Faster downloads
+- Better security
+- Production ready
+- Less storage usage
+
+
+=====================================================
+
+3. DOCKER COMPOSE
+=================
+
+Definition:
+-----------
+Docker Compose is a tool used to define and manage multiple Docker containers using a single YAML file (docker-compose.yml).
+
+Instead of starting containers one by one, Docker Compose starts all services together.
+
+Example:
+--------
+Application:
+- Frontend
+- Backend
+- Database
+
+Without Compose:
+----------------
+docker run mysql
+
+docker run backend
+
+docker run frontend
+
+With Compose:
+-------------
+docker compose up
+
+Everything starts automatically.
+
+Example docker-compose.yml:
+---------------------------
+
+version: "3"
+
+services:
+
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+Common Commands:
+----------------
+
+Start services:
+docker compose up
+
+Run in background:
+docker compose up -d
+
+Stop services:
+docker compose down
+
+View containers:
+docker compose ps
+
+Advantages:
+-----------
+- Easy multi-container management
+- Single configuration file
+- Easy networking
+- Easy volume management
+- Good for development and testing
+
+
+=====================================================
+
+4. DOCKER SWARM
+===============
+
+Definition:
+-----------
+Docker Swarm is Docker's native container orchestration tool used to manage multiple Docker hosts as a single cluster.
+
+Purpose:
+--------
+- Deploy applications across multiple servers
+- High availability
+- Load balancing
+- Auto recovery
+- Scaling
+

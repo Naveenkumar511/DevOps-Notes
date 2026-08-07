@@ -1,0 +1,889 @@
+===============================
+Infrastructure as Code (IaC)
+===============================
+
+What is IaC?
+-------------
+Infrastructure as Code (IaC) means managing and creating infrastructure
+using code instead of manual configuration.
+
+Instead of:
+- Creating servers manually
+- Clicking in AWS Console
+- Configuring resources one by one
+
+We write code files and tools automatically create infrastructure.
+
+Examples:
+---------
+- EC2 Instances
+- VPC
+- Load Balancer
+- S3 Bucket
+- Databases
+- Kubernetes Clusters
+
+Advantages of IaC:
+-------------------
+1. Automation
+2. Faster deployment
+3. Reusable code
+4. Easy scaling
+5. Reduces manual errors
+6. Consistent infrastructure
+7. Version control with Git
+
+Popular IaC Tools:
+-------------------
+1. Terraform
+2. AWS CloudFormation
+3. Ansible
+4. Pulumi
+
+
+===============================
+What is Terraform?
+===============================
+
+Terraform is an open-source Infrastructure as Code (IaC) tool
+developed by HashiCorp.
+
+Language: HCL (HashiCorp Language)
+Terraform is used to:
+----------------------
+- Create infrastructure
+- Update infrastructure
+- Delete infrastructure
+
+Supported Platforms:
+---------------------
+- AWS
+- Azure
+- Google Cloud
+- Kubernetes
+- Docker
+- VMware
+
+
+===============================
+Terraform Workflow
+===============================
+
+Write Code
+    ↓
+terraform init
+    ↓
+terraform plan
+    ↓
+terraform apply
+
+
+===============================
+Basic Terraform Commands
+===============================
+
+1. terraform init
+------------------
+Initializes Terraform project.
+Downloads required provider plugins.
+
+Command:
+terraform init
+
+
+2. terraform plan
+------------------
+Shows what Terraform will create or modify.
+
+Command:
+terraform plan
+
+
+3. terraform apply
+-------------------
+Creates infrastructure.
+
+Command:
+terraform apply
+
+
+4. terraform destroy
+---------------------
+Deletes infrastructure.
+
+Command:
+terraform destroy
+
+
+5. terraform validate
+----------------------
+Checks syntax errors.
+
+Command:
+terraform validate
+
+
+6. terraform fmt
+-----------------
+Formats Terraform code properly.
+
+Command:
+terraform fmt
+
+
+===============================
+Terraform Architecture
+===============================
+
+Terraform Code (.tf files)
+            ↓
+Terraform Core
+            ↓
+Providers
+            ↓
+Cloud Platform (AWS/Azure/GCP)
+
+
+===============================
+Important Terraform Components
+===============================
+
+1. Provider
+-------------
+Provider connects Terraform with cloud platforms.
+
+Example:
+provider "aws" {
+  region = "ap-south-1"
+}
+
+
+2. Resource
+-------------
+Anything created by Terraform is called a resource.
+
+Examples:
+- EC2
+- VPC
+- S3 Bucket
+
+Example:
+resource "aws_instance" "myserver" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}
+
+
+3. Variables
+--------------
+Variables make code reusable.
+
+Example:
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+
+4. Output
+-----------
+Displays values after deployment.
+
+Example:
+output "instance_ip" {
+  value = aws_instance.myserver.public_ip
+}
+
+
+===============================
+Terraform State File
+===============================
+
+Terraform stores infrastructure details in:
+
+terraform.tfstate
+
+Purpose:
+---------
+- Tracks resources
+- Maintains infrastructure state
+
+Important:
+-----------
+Do not edit state file manually.
+
+
+===============================
+Terraform File Types
+===============================
+
+main.tf
+---------
+Main configuration file
+
+variables.tf
+--------------
+Stores variables
+
+outputs.tf
+------------
+Stores outputs
+
+terraform.tfstate
+------------------
+Stores infrastructure state
+
+
+===============================
+Advantages of Terraform
+===============================
+
+1. Multi-cloud support
+2. Open source
+3. Easy automation
+4. Reusable modules
+5. Declarative language
+6. Community support
+
+
+===============================
+Terraform vs CloudFormation
+===============================
+
+Terraform:
+------------
+- Multi-cloud
+- Open source
+- Uses HCL language
+
+CloudFormation:
+----------------
+- AWS only
+- AWS managed service
+- Uses JSON/YAML
+
+
+===============================
+Real-Time DevOps Use Cases
+===============================
+
+1. AWS Infrastructure Automation
+2. Kubernetes Cluster Creation
+3. CI/CD Automation
+4. Auto Scaling Setup
+5. Disaster Recovery
+6. Multi-environment Deployment
+
+
+===============================
+Simple Terraform Project Structure
+===============================
+
+terraform-project/
+|
+|-- main.tf
+|-- variables.tf
+|-- outputs.tf
+|-- terraform.tfstate
+
+
+===============================
+Terraform Lifecycle
+===============================
+
+Code → Plan → Apply → Manage → Destroy
+
+
+
+
+====================================
+Terraform Workspace
+====================================
+
+What is Workspace?
+------------------
+A Terraform Workspace allows you to manage multiple environments
+using the same Terraform configuration.
+
+Instead of creating multiple Terraform projects,
+you can use different workspaces.
+
+Example:
+
+Development
+Testing
+Staging
+Production
+
+All use the same code but maintain separate state files.
+
+
+====================================
+Why Workspaces?
+====================================
+
+Suppose you have one project.
+
+Without Workspace:
+
+Project-Dev
+Project-Test
+Project-Prod
+
+Three separate Terraform folders.
+
+With Workspace:
+
+One Terraform project
+
+Development Workspace
+
+Testing Workspace
+
+Production Workspace
+
+Same code
+
+Different state files
+
+
+====================================
+How Workspace Works
+====================================
+
+Terraform Code
+
+        │
+
+        ▼
+
+Workspace
+
+        │
+
+        ├── dev.tfstate
+
+        ├── test.tfstate
+
+        └── prod.tfstate
+
+Each workspace stores its own Terraform state.
+
+
+====================================
+Default Workspace
+====================================
+
+Terraform automatically creates one workspace.
+
+Name:
+
+default
+
+
+Check Current Workspace:
+
+terraform workspace show
+
+
+====================================
+Workspace Commands
+====================================
+
+Create Workspace
+
+terraform workspace new dev
+
+terraform workspace new test
+
+terraform workspace new prod
+
+
+List Workspaces
+
+terraform workspace list
+
+
+Example Output
+
+* default
+
+dev
+
+test
+
+prod
+
+The (*) indicates the currently active workspace.
+
+
+Switch Workspace
+
+terraform workspace select dev
+
+
+Check Current Workspace
+
+terraform workspace show
+
+
+Delete Workspace
+
+terraform workspace delete dev
+
+Note:
+You cannot delete the workspace that is currently selected.
+
+
+====================================
+Using Workspace in Terraform
+====================================
+
+Terraform provides a built-in variable.
+
+terraform.workspace
+
+Example:
+
+resource "aws_instance" "web" {
+
+    tags = {
+
+        Environment = terraform.workspace
+
+    }
+
+}
+
+If current workspace is:
+
+dev
+
+Output:
+
+Environment = dev
+
+If workspace is:
+
+prod
+
+Output:
+
+Environment = prod
+
+
+====================================
+Advantages of Workspace
+====================================
+
+1. Same code for multiple environments
+
+2. Separate state files
+
+3. Easy environment switching
+
+4. Less maintenance
+
+5. Supports CI/CD pipelines
+
+6. Faster deployments
+
+
+
+
+====================================
+Terraform Modules
+====================================
+
+What is a Module?
+-----------------
+A Terraform module is a collection of Terraform configuration files
+(.tf files) that are grouped together to perform a specific task.
+
+Think of a module as a reusable template.
+
+Example:
+--------
+Instead of writing EC2 configuration multiple times,
+you can create one EC2 module and reuse it whenever needed.
+
+Real-Life Example:
+------------------
+Imagine building a house.
+
+Without Modules:
+Every time you build a house, you buy and assemble every brick,
+door, window, and roof from scratch.
+
+With Modules:
+You have a ready-made house blueprint that you can reuse for
+multiple houses.
+
+Terraform follows the same concept.
+
+
+====================================
+Why do we use Modules?
+====================================
+
+1. Reusability
+--------------
+Write code once and use it multiple times.
+
+2. Easy Maintenance
+-------------------
+If you update the module, every project using it can benefit
+from the change.
+
+3. Reduces Duplicate Code
+-------------------------
+Avoid writing the same code repeatedly.
+
+4. Better Organization
+----------------------
+Keeps Terraform projects clean and modular.
+
+5. Team Collaboration
+---------------------
+Different teams can maintain different modules.
+
+
+====================================
+Types of Modules
+====================================
+
+1. Root Module
+--------------
+The directory where Terraform commands are executed.
+
+Example:
+
+terraform init
+terraform plan
+terraform apply
+
+The folder containing these commands is the Root Module.
+
+
+2. Child Module
+---------------
+A module that is called from another module.
+
+Example:
+
+module "ec2" {
+    source = "./modules/ec2"
+}
+
+Here,
+Root Module
+     |
+     |----> Child Module (EC2)
+
+
+====================================
+Terraform Module Structure
+====================================
+
+terraform-project/
+
+│
+├── main.tf
+├── variables.tf
+├── outputs.tf
+│
+└── modules/
+      │
+      ├── ec2/
+      │      ├── main.tf
+      │      ├── variables.tf
+      │      └── outputs.tf
+      │
+      └── vpc/
+             ├── main.tf
+             ├── variables.tf
+             └── outputs.tf
+
+
+====================================
+How Modules Work
+====================================
+
+Step 1
+-------
+Create a folder named modules.
+
+Step 2
+-------
+Create a folder inside modules.
+
+Example:
+
+modules/ec2
+
+Step 3
+-------
+Write EC2 resource code inside the module.
+
+Step 4
+-------
+Call the module from the root module.
+
+
+====================================
+Calling a Module
+====================================
+
+Example:
+
+module "ec2_instance" {
+
+    source = "./modules/ec2"
+
+    instance_type = "t2.micro"
+
+    instance_name = "WebServer"
+
+}
+
+Explanation:
+------------
+module           -> Module block
+
+ec2_instance     -> Module name
+
+source           -> Location of module
+
+instance_type    -> Input variable
+
+instance_name    -> Input variable
+
+
+====================================
+Module Input Variables
+====================================
+
+Inside modules/ec2/variables.tf
+
+variable "instance_type" {}
+
+variable "instance_name" {}
+
+
+====================================
+Module Outputs
+====================================
+
+Inside modules/ec2/outputs.tf
+
+output "public_ip" {
+
+    value = aws_instance.web.public_ip
+
+}
+
+Now the root module can use:
+
+module.ec2_instance.public_ip
+
+
+====================================
+Advantages of Modules
+====================================
+
+1. Reusable
+2. Easy to maintain
+3. Clean project structure
+4. Standardized deployments
+5. Team collaboration
+6. Less code duplication
+
+
+
+==========================================
+Terraform Remote Backend
+==========================================
+
+What is a Backend?
+------------------
+A backend in Terraform determines where the Terraform state file
+(terraform.tfstate) is stored and how Terraform performs operations
+such as state locking.
+
+By default, Terraform stores the state file locally.
+
+Example:
+
+terraform.tfstate
+
+stored in your project directory.
+
+
+==========================================
+Local Backend
+==========================================
+
+Example:
+
+Laptop
+
+│
+
+├── main.tf
+
+├── variables.tf
+
+└── terraform.tfstate
+
+Problems with Local Backend:
+----------------------------
+1. State file is stored only on one machine.
+2. Difficult for teams to collaborate.
+3. No state locking.
+4. Risk of losing the state file if the system crashes.
+5. Cannot be shared easily in CI/CD pipelines.
+
+
+==========================================
+What is a Remote Backend?
+==========================================
+
+A Remote Backend stores the Terraform state file in a shared remote
+location instead of on your local machine.
+
+Examples:
+---------
+AWS S3
+Azure Storage Account
+Google Cloud Storage
+Terraform Cloud
+HashiCorp Enterprise
+
+The most common setup in AWS is:
+
+S3 Bucket + DynamoDB Table
+
+
+==========================================
+Example Backend Configuration
+==========================================
+
+terraform {
+
+  backend "s3" {
+
+    bucket         = "company-terraform-state"
+
+    key            = "dev/terraform.tfstate"
+
+    region         = "ap-south-1"
+
+    dynamodb_table = "terraform-lock"
+
+    encrypt        = true
+
+  }
+
+}
+
+
+
+
+==========================================
+
+
+Troubleshooting
+============
+
+1. Resource Already Exists
+===========================================
+
+Error:
+
+BucketAlreadyExists
+
+InstanceAlreadyExists
+
+ResourceAlreadyExists
+
+Cause:
+------
+Terraform is trying to create an existing resource.
+
+Solution:
+
+Option 1
+
+Import existing resource.
+
+terraform import
+
+Option 2
+
+Delete existing resource.
+
+Option 3
+
+Use another resource name.
+
+-------------------------------------------
+
+
+===========================================
+2. State File Locked
+===========================================
+
+Error:
+
+Error acquiring state lock
+
+Cause:
+------
+Another Terraform process is using the state.
+
+Possible reasons:
+
+Another engineer is running Terraform.
+
+CI/CD pipeline is running.
+
+Unexpected interruption.
+
+Solution:
+
+Wait for current process.
+
+Or unlock manually:
+
+terraform force-unlock LOCK_ID
+
+Do NOT unlock unless you're sure no one else is using the state.
+
+
+
+
+3. State Drift
+===========================================
+
+Problem:
+
+Someone manually modified AWS resources.
+
+Terraform state and AWS are different.
+
+Symptoms:
+
+Unexpected changes in plan.
+
+Solution:
+
+terraform plan
+
+Review changes.
+
+terraform apply
+
+or
+
+terraform import
+
+Avoid manual AWS Console changes.

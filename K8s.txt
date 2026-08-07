@@ -1,0 +1,2229 @@
+====================================================================
+TOPIC 1 : WHAT IS CONTAINER ORCHESTRATION?
+====================================================================
+
+What is Container Orchestration?
+--------------------------------
+
+Container Orchestration is the process of automatically managing
+containers.
+
+Instead of manually starting, stopping, and monitoring containers,
+an orchestration tool does it automatically.
+
+Simple Definition
+-----------------
+
+Container Orchestration = Automatic management of containers.
+
+--------------------------------------------------------------------
+
+Why Do We Need It?
+------------------
+
+Suppose a company has:
+
+100 Containers
+
+Managing them manually is difficult.
+
+Example:
+
+Start Containers
+
+Stop Containers
+
+Restart Failed Containers
+
+Scale Containers
+
+Load Balancing
+
+Monitoring
+
+Doing this manually is time-consuming.
+
+Container Orchestration automates these tasks.
+
+--------------------------------------------------------------------
+
+What Can Container Orchestration Do?
+------------------------------------
+
+✔ Deploy Containers
+
+✔ Scale Containers
+
+✔ Restart Failed Containers
+
+✔ Load Balancing
+
+✔ Auto Healing
+
+✔ Rolling Updates
+
+✔ Service Discovery
+
+✔ Resource Management
+
+--------------------------------------------------------------------
+
+====================================================================
+TOPIC 2 : CONTAINER ORCHESTRATION TOOLS
+====================================================================
+
+Popular Container Orchestration Tools
+-------------------------------------
+
+1. Kubernetes (K8s)
+
+Most popular orchestration tool.
+
+Used by Google, Microsoft, Amazon and many companies.
+
+----------------------------------------------------
+
+2. Docker Swarm
+
+Built into Docker.
+
+Easy to learn.
+
+Suitable for small applications.
+
+----------------------------------------------------
+
+3. Red Hat OpenShift
+
+Enterprise Kubernetes platform.
+
+Provides additional security and management features.
+
+----------------------------------------------------
+
+4. Amazon ECS
+
+AWS container orchestration service.
+
+Used only in AWS.
+
+----------------------------------------------------
+====================================================================
+TOPIC 3 : WHAT IS KUBERNETES (K8s)?
+====================================================================
+
+What is Kubernetes?
+-------------------
+
+Kubernetes is an open-source container orchestration platform.
+
+It is used to deploy, manage, scale and monitor containers.
+
+Simple Definition
+-----------------
+
+Kubernetes automatically manages Docker containers.
+
+--------------------------------------------------------------------
+
+Why Do We Need Kubernetes?
+--------------------------
+
+Imagine you have
+
+500 Docker Containers.
+
+Managing them manually is difficult.
+
+Kubernetes helps to
+
+Deploy Containers
+
+Scale Containers
+
+Restart Failed Containers
+
+Perform Updates
+
+Load Balance Traffic
+
+--------------------------------------------------------------------
+
+Features
+---------
+
+✔ Auto Healing
+
+✔ Auto Scaling
+
+✔ Load Balancing
+
+✔ Rolling Updates
+
+✔ Self Healing
+
+✔ Service Discovery
+
+✔ High Availability
+
+--------------------------------------------------------------------
+
+Real-Time Example
+-----------------
+
+Company: Netflix
+
+Thousands of containers are running.
+
+If one container fails,
+
+Kubernetes automatically creates a new one.
+
+--------------------------------------------------------------------
+
+====================================================================
+TOPIC 4 : KUBERNETES ARCHITECTURE
+====================================================================
+
+What is Kubernetes Architecture?
+--------------------------------
+
+Kubernetes Architecture is the structure of a Kubernetes cluster.
+
+A Kubernetes Cluster consists of:
+
+1. Control Plane (Master Node)
+2. Worker Node(s)
+
+--------------------------------------------------------------------
+
+Architecture Diagram
+--------------------
+
+                    Kubernetes Cluster
+                           |
+          -----------------------------------
+          |                                 |
+   Control Plane                     Worker Node
+   (Master Node)                     (Node 1)
+                                          |
+                                   ----------------
+                                   |      |       |
+                                  Pod1   Pod2    Pod3
+
+More worker nodes can be added as needed.
+
+--------------------------------------------------------------------
+
+1. Control Plane (Master Node)
+------------------------------
+
+The Control Plane manages the entire Kubernetes cluster.
+
+It does NOT run application containers.
+
+Responsibilities
+
+✔ Manage Cluster
+
+✔ Schedule Pods
+
+✔ Monitor Cluster
+
+✔ Handle API Requests
+
+✔ Maintain Cluster State
+
+--------------------------------------------------------------------
+
+Main Components of Control Plane
+--------------------------------
+
+1. API Server
+
+2. Scheduler
+
+3. Controller Manager
+
+4. ETCD
+
+5. Cloud Control Manager
+
+--------------------------------------------------------------------
+
+API Server
+----------
+
+The API Server is the entry point of Kubernetes.
+
+All kubectl commands first reach the API Server.
+
+Example
+
+kubectl get pods
+
+↓
+
+API Server
+
+--------------------------------------------------------------------
+
+Scheduler
+---------
+
+The Scheduler decides on which Worker Node a Pod should run.
+
+Example
+
+Pod Created
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node 1
+
+--------------------------------------------------------------------
+
+Controller Manager
+------------------
+
+The Controller Manager continuously checks the cluster.
+
+If a Pod fails,
+
+It automatically creates a new Pod.
+
+This is called Self-Healing.
+
+--------------------------------------------------------------------
+
+ETCD
+----
+
+ETCD is the Kubernetes database.
+
+It stores:
+
+- Cluster Information
+- Pod Information
+- Node Information
+- Deployment Details
+- Configuration
+
+--------------------------------------------------------------------
+
+2. Worker Node
+--------------
+
+A Worker Node runs the application containers.
+
+Every Worker Node contains:
+
+- Kubelet
+- Kube Proxy
+- Container Runtime
+- Pods
+
+--------------------------------------------------------------------
+
+Worker Node Components
+----------------------
+
+Kubelet
+
+Communicates with the Control Plane.
+
+Makes sure Pods are running.
+
+----------------------------------------------------
+
+Kube Proxy
+
+Handles networking.
+
+Routes traffic to Pods.
+
+----------------------------------------------------
+
+Container Runtime
+
+Runs containers.
+
+Examples
+
+containerd
+
+CRI-O
+
+Docker 
+
+--------------------------------------------------------------------
+
+Pod
+
+A Pod contains one or more containers.
+
+It is the smallest deployable unit in Kubernetes.
+
+--------------------------------------------------------------------
+
+Cluster Workflow
+----------------
+
+Developer
+
+↓
+
+kubectl apply
+
+↓
+
+API Server
+
+↓
+
+Scheduler
+
+↓
+
+Worker Node
+
+↓
+
+Pod Created
+
+↓
+
+Application Running
+
+--------------------------------------------------------------------
+
+Real-Time Example
+-----------------
+
+Suppose you deploy a Shopping Website.
+
+Command
+
+kubectl apply -f deployment.yaml
+
+What happens?
+
+1. API Server receives request.
+
+2. Scheduler selects Worker Node.
+
+3. Kubelet creates Pod.
+
+4. Container starts.
+
+5. Website becomes available.
+
+--------------------------------------------------------------------
+
+Important Points
+----------------
+
+✔ Control Plane manages the cluster.
+
+✔ Worker Nodes run applications.
+
+✔ ETCD stores cluster information.
+
+✔ Scheduler places Pods.
+
+✔ Kubelet manages Pods.
+
+✔ Kube Proxy manages networking.
+
+--------------------------------------------------------------------
+
+====================================================================
+TOPIC 5 : POD
+====================================================================
+
+What is a Pod?
+--------------
+
+A Pod is the smallest deployable unit in Kubernetes.
+
+A Pod contains one or more containers.
+
+Simple Definition
+-----------------
+
+Pod = Smallest unit in Kubernetes.
+
+OR
+
+Pod = Wrapper around one or more containers.
+
+--------------------------------------------------------------------
+
+Why Do We Need Pods?
+--------------------
+
+Kubernetes cannot create containers directly.
+
+Instead,
+
+Kubernetes creates Pods,
+
+and Pods run the containers.
+
+Example
+
+Docker
+
+↓
+
+Container
+
+Kubernetes
+
+↓
+
+Pod
+
+↓
+
+Container
+
+--------------------------------------------------------------------
+
+Pod Architecture
+----------------
+
+          Kubernetes
+
+               |
+
+            Creates
+
+               |
+
+              Pod
+
+               |
+
+        ----------------
+
+        |              |
+
+   Container        Storage
+
+--------------------------------------------------------------------
+
+
+Types of Pods
+-------------
+
+1. Single Container Pod
+
+2. Multi-Container Pod
+
+--------------------------------------------------------------------
+
+1. Single Container Pod
+
+One Pod
+
+↓
+
+One Container
+
+Example
+
+Pod
+
+↓
+
+Nginx Container
+
+This is the most common type.
+
+--------------------------------------------------------------------
+
+2. Multi-Container Pod
+
+One Pod
+
+↓
+
+Container 1
+
+Container 2
+
+Example
+
+Application Container
+
++
+
+Logging Container
+
+Both containers share:
+
+✔ Network
+
+✔ Storage
+
+--------------------------------------------------------------------
+
+Pod Life Cycle
+--------------
+
+Pod Created
+
+↓
+
+Running
+
+↓
+
+Succeeded
+
+OR
+
+Failed
+
+--------------------------------------------------------------------
+
+Basic Pod YAML File
+-------------------
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: nginx-pod
+  env: dev
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+
+--------------------------------------------------------------------
+
+Explanation
+-----------
+
+apiVersion
+
+Kubernetes API version.
+
+------------------------------------------------
+
+kind
+
+Type of Kubernetes object.
+
+Here it is
+
+Pod
+
+------------------------------------------------
+
+metadata
+
+Information about the Pod.
+
+Example
+
+Name
+
+Labels
+
+Namespace
+
+------------------------------------------------
+
+spec
+
+Specification of the Pod.
+
+Inside spec we define
+
+Container Name
+
+Docker Image
+
+Port
+
+Volumes
+
+--------------------------------------------------------------------
+
+Create Pod
+----------
+
+kubectl apply -f pod.yaml
+
+--------------------------------------------------------------------
+
+View Running Pods
+-----------------
+
+kubectl get pods
+
+--------------------------------------------------------------------
+
+Detailed Pod Information
+------------------------
+
+kubectl describe pod nginx-pod
+
+--------------------------------------------------------------------
+
+View Pod Logs
+-------------
+
+kubectl logs nginx-pod
+
+--------------------------------------------------------------------
+
+Login into Pod
+--------------
+
+kubectl exec -it nginx-pod -- /bin/bash
+
+OR
+
+kubectl exec -it nginx-pod -- sh
+
+--------------------------------------------------------------------
+
+Delete Pod
+----------
+
+kubectl delete pod nginx-pod
+
+--------------------------------------------------------------------
+
+Limitations of Pods
+-------------------
+
+Pods are temporary.
+
+If a Pod crashes,
+
+Kubernetes creates a new Pod only if it is managed by a ReplicaSet or
+Deployment.
+
+Creating Pods directly is mainly used for:
+
+✔ Learning
+
+✔ Testing
+
+✔ Debugging
+
+In production, use Deployments instead of creating Pods directly.
+
+--------------------------------------------------------------------
+
+====================================================================
+TOPIC 6 : REPLICASET
+====================================================================
+
+What is a ReplicaSet?
+---------------------
+
+A ReplicaSet is a Kubernetes object that ensures the required number
+of Pods are always running.
+
+Simple Definition
+-----------------
+
+ReplicaSet maintains the desired number of Pod replicas.
+
+OR
+
+ReplicaSet automatically creates new Pods if any Pod fails.
+
+--------------------------------------------------------------------
+
+Why Do We Need ReplicaSet?
+--------------------------
+
+Suppose you have one Pod running.
+
+If the Pod crashes,
+
+Your application becomes unavailable.
+
+ReplicaSet solves this problem.
+
+It automatically creates a new Pod to replace the failed one.
+
+--------------------------------------------------------------------
+
+
+ReplicaSet YAML Example
+-----------------------
+
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata:
+  name: nginx-rs
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+
+--------------------------------------------------------------------
+
+Create ReplicaSet
+-----------------
+
+kubectl apply -f replicaset.yaml
+
+--------------------------------------------------------------------
+
+View ReplicaSets
+----------------
+
+kubectl get rs
+
+OR
+
+kubectl get replicasets
+
+--------------------------------------------------------------------
+
+View Pods
+---------
+
+kubectl get pods
+
+--------------------------------------------------------------------
+
+Describe ReplicaSet
+-------------------
+
+kubectl describe rs nginx-rs
+
+--------------------------------------------------------------------
+
+Delete ReplicaSet
+-----------------
+
+kubectl delete rs nginx-rs
+
+Note:
+
+Deleting the ReplicaSet also deletes the Pods it manages.
+
+--------------------------------------------------------------------
+
+
+Advantages
+----------
+
+✔ High Availability
+
+✔ Self-Healing
+
+✔ Automatic Pod Recovery
+
+✔ Maintains Desired Number of Pods
+
+--------------------------------------------------------------------
+
+Limitations
+-----------
+
+ReplicaSet only maintains Pods.
+
+It cannot:
+
+✘ Perform Rolling Updates
+
+✘ Rollback to Previous Version
+
+✘ Manage Application Versions
+
+For these features,
+
+Deployment is used.
+
+--------------------------------------------------------------------
+====================================================================
+TOPIC 7 : DEPLOYMENT
+====================================================================
+
+What is a Deployment?
+---------------------
+
+A Deployment is a Kubernetes object used to deploy and manage
+applications.
+
+It manages Pods through a ReplicaSet.
+
+Simple Definition
+-----------------
+
+Deployment is used to create, update and manage Pods.
+
+OR
+
+Deployment manages ReplicaSets, and ReplicaSets manage Pods.
+
+--------------------------------------------------------------------
+
+Why Do We Need Deployment?
+--------------------------
+
+Suppose your application has 3 Pods.
+
+If one Pod crashes,
+
+ReplicaSet creates a new Pod.
+
+But what if you want to:
+
+• Update the application
+
+• Rollback to the previous version
+
+• Scale the application
+
+ReplicaSet cannot do these tasks.
+
+Deployment provides these features.
+
+--------------------------------------------------------------------
+
+Deployment Architecture
+-----------------------
+
+                 Deployment
+                      |
+                      V
+                 ReplicaSet
+                      |
+          -------------------------
+          |          |           |
+         Pod1       Pod2       Pod3
+                      |
+                  Container
+
+--------------------------------------------------------------------
+
+Deployment Responsibilities
+---------------------------
+
+✔ Create Pods
+
+✔ Manage ReplicaSets
+
+✔ Scale Pods
+
+✔ Rolling Updates
+
+✔ Rollback
+
+✔ Self-Healing
+
+--------------------------------------------------------------------
+
+Deployment YAML Example
+-----------------------
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: nginx-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+
+--------------------------------------------------------------------
+
+containers
+
+Defines
+
+Container Name
+
+Docker Image
+
+Container Port
+
+--------------------------------------------------------------------
+
+Create Deployment
+-----------------
+
+kubectl apply -f deployment.yaml
+
+--------------------------------------------------------------------
+
+View Deployments
+----------------
+
+kubectl get deployments
+
+OR
+
+kubectl get deploy
+
+--------------------------------------------------------------------
+
+View ReplicaSets
+----------------
+
+kubectl get rs
+
+--------------------------------------------------------------------
+
+View Pods
+---------
+
+kubectl get pods
+
+--------------------------------------------------------------------
+
+Describe Deployment
+-------------------
+
+kubectl describe deployment nginx-deployment
+
+--------------------------------------------------------------------
+
+Delete Deployment
+-----------------
+
+kubectl delete deployment nginx-deployment
+
+--------------------------------------------------------------------
+
+
+Rolling Update
+--------------
+
+Rolling Update updates Pods one by one without stopping the application.
+
+Example
+
+Current Image
+
+nginx:1.25
+
+↓
+
+New Image
+
+nginx:1.26
+
+Kubernetes replaces Pods gradually.
+
+Users do not experience downtime.
+
+Command
+
+kubectl set image deployment/nginx-deployment nginx=nginx:1.26
+
+--------------------------------------------------------------------
+
+Rollback
+---------
+
+If the new version has a problem,
+
+Deployment can restore the previous version.
+
+Command
+
+kubectl rollout undo deployment/nginx-deployment
+
+--------------------------------------------------------------------
+
+
+Real-Time Example
+-----------------
+
+An E-Commerce website has 3 Pods.
+
+A new application version is released.
+
+Instead of stopping the application,
+
+Deployment updates one Pod at a time.
+
+Users continue using the website without interruption.
+
+If the new version has an issue,
+
+Rollback restores the previous version.
+
+--------------------------------------------------------------------
+
+Advantages
+----------
+
+✔ High Availability
+
+✔ Self-Healing
+
+✔ Auto Scaling
+
+✔ Rolling Updates
+
+✔ Rollback Support
+
+✔ Easy Management
+
+--------------------------------------------------------------------
+
+====================================================================
+TOPIC 8 : SERVICE
+====================================================================
+
+What is a Service?
+------------------
+
+A Service is a Kubernetes object used to expose Pods.
+
+It provides a fixed IP address and DNS name to access Pods.
+
+Simple Definition
+-----------------
+
+Service = Permanent access to Pods.
+
+OR
+
+Service provides a stable network endpoint for Pods.
+
+--------------------------------------------------------------------
+
+Why Do We Need a Service?
+-------------------------
+
+Pods are temporary.
+
+If a Pod is deleted or recreated,
+
+its IP address changes.
+
+Applications cannot communicate using changing IP addresses.
+
+A Service solves this problem by providing a fixed IP.
+
+--------------------------------------------------------------------
+
+Without Service
+---------------
+
+Pod 1
+
+IP = 10.10.1.5
+
+↓
+
+Pod crashes
+
+↓
+
+New Pod
+
+IP = 10.10.1.9
+
+Application cannot find the new Pod.
+
+--------------------------------------------------------------------
+
+With Service
+------------
+
+Client
+
+↓
+
+Service (Fixed IP)
+
+↓
+
+Pod 1
+
+Pod 2
+
+Pod 3
+
+Even if Pods change,
+
+the Service remains the same.
+
+--------------------------------------------------------------------
+
+How Service Works
+-----------------
+
+            User
+
+             |
+
+             V
+
+          Service
+
+             |
+
+     -----------------
+
+     |       |       |
+
+    Pod1    Pod2    Pod3
+
+The Service automatically sends traffic to available Pods.
+
+--------------------------------------------------------------------
+
+Types of Services
+-----------------
+
+1. ClusterIP
+
+2. NodePort
+
+3. LoadBalancer
+
+--------------------------------------------------------------------
+
+1. ClusterIP
+------------
+
+Default Service Type.
+
+Used for communication inside the Kubernetes Cluster.
+
+Cannot be accessed from outside.
+
+Example
+
+Frontend
+
+↓
+
+Service
+
+↓
+
+Backend
+
+--------------------------------------------------------------------
+
+2. NodePort
+-----------
+
+Exposes the application outside the cluster.
+
+Uses a port between
+
+30000 - 32767
+
+Example
+
+http://Node-IP:30080
+
+--------------------------------------------------------------------
+
+3. LoadBalancer
+---------------
+
+Used in Cloud environments.
+
+Creates an external Load Balancer.
+
+Supported by
+
+AWS
+
+Azure
+
+Google Cloud
+
+--------------------------------------------------------------------
+
+Service YAML Example
+--------------------
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: nginx-service
+
+spec:
+  selector:
+    app: nginx
+
+  ports:
+  - port: 80
+    targetPort: 5000
+
+  type: ClusterIP
+
+--------------------------------------------------------------------
+Create Service
+--------------
+
+kubectl apply -f service.yaml
+
+--------------------------------------------------------------------
+
+View Services
+-------------
+
+kubectl get svc
+
+OR
+
+kubectl get services
+
+--------------------------------------------------------------------
+
+Describe Service
+----------------
+
+kubectl describe svc nginx-service
+
+--------------------------------------------------------------------
+
+Delete Service
+--------------
+
+kubectl delete svc nginx-service
+
+--------------------------------------------------------------------
+
+Advantages
+----------
+
+✔ Fixed IP Address
+
+✔ DNS Name
+
+✔ Load Balancing
+
+✔ Service Discovery
+
+✔ Easy Communication Between Pods
+
+--------------------------------------------------------------------
+
+====================================================================
+TOPIC 9 : INGRESS
+====================================================================
+
+What is Ingress?
+----------------
+
+Ingress is a Kubernetes object used to manage external access to
+applications running inside the Kubernetes cluster.
+
+It routes incoming traffic to the correct Service based on
+the URL or domain name.
+
+Simple Definition
+-----------------
+
+Ingress = Traffic Router
+
+OR
+
+Ingress routes user requests to the correct Service.
+
+--------------------------------------------------------------------
+
+Why Do We Need Ingress?
+-----------------------
+
+Suppose you have three applications.
+
+Shopping Website
+
+Payment Service
+
+Admin Portal
+
+Without Ingress
+
+Each application needs its own LoadBalancer Service.
+
+This increases cost.
+
+With Ingress
+
+One LoadBalancer
+
+↓
+
+Ingress
+
+↓
+
+Routes requests to different applications.
+
+--------------------------------------------------------------------
+
+Without Ingress
+---------------
+
+Internet
+
+ |
+
+ |---- LoadBalancer ---> Shopping App
+
+ |
+
+ |---- LoadBalancer ---> Payment App
+
+ |
+
+ |---- LoadBalancer ---> Admin App
+
+Need 3 LoadBalancers
+
+More Cost
+
+--------------------------------------------------------------------
+
+With Ingress
+------------
+
+Internet
+
+      |
+
+      V
+
+   Ingress
+
+      |
+
+-------------------------------
+
+|              |              |
+
+Shopping     Payment       Admin
+
+Service      Service       Service
+
+Only One LoadBalancer
+
+Lower Cost
+
+--------------------------------------------------------------------
+
+How Ingress Works
+-----------------
+
+User enters
+
+shop.example.com
+
+↓
+
+Ingress
+
+↓
+
+Shopping Service
+
+↓
+
+Shopping Pods
+
+----------------------------------------------------
+
+User enters
+
+api.example.com
+
+↓
+
+Ingress
+
+↓
+
+API Service
+
+↓
+
+API Pods
+
+--------------------------------------------------------------------
+
+Ingress Routing Example
+-----------------------
+
+URL
+
+shop.example.com
+
+↓
+
+Shopping Service
+
+↓
+
+Shopping Pods
+
+--------------------------------
+
+URL
+
+admin.example.com
+
+↓
+
+Admin Service
+
+↓
+
+Admin Pods
+
+--------------------------------------------------------------------
+
+Basic Ingress YAML
+------------------
+
+apiVersion: networking.k8s.io/v1
+
+kind: Ingress
+
+metadata:
+  name: app-ingress
+
+spec:
+  rules:
+  - host: shop.example.com
+
+    http:
+      paths:
+
+      - path: /
+
+        pathType: Prefix
+
+        backend:
+
+          service:
+
+            name: shop-service
+
+            port:
+
+              number: 80
+
+--------------------------------------------------------------------
+
+Create Ingress
+--------------
+
+kubectl apply -f ingress.yaml
+
+--------------------------------------------------------------------
+
+View Ingress
+------------
+
+kubectl get ingress
+
+OR
+
+kubectl get ing
+
+--------------------------------------------------------------------
+
+Describe Ingress
+----------------
+
+kubectl describe ingress app-ingress
+
+--------------------------------------------------------------------
+
+Delete Ingress
+--------------
+
+kubectl delete ingress app-ingress
+
+--------------------------------------------------------------------
+
+Real-Time Example
+-----------------
+
+Company has
+
+Shopping Website
+
+Payment API
+
+Admin Portal
+
+Users access
+
+shop.company.com
+
+↓
+
+Shopping Service
+
+--------------------------------
+
+api.company.com
+
+↓
+
+Payment Service
+
+--------------------------------
+
+admin.company.com
+
+↓
+
+Admin Service
+
+All requests are managed by one Ingress.
+
+--------------------------------------------------------------------
+
+Advantages
+----------
+
+✔ Single Entry Point
+
+✔ URL Routing
+
+✔ Domain-Based Routing
+
+✔ Path-Based Routing
+
+✔ Lower Cloud Cost
+
+✔ Easy Management
+
+--------------------------------------------------------------------
+====================================================================
+TOPIC 10 : INGRESS CONTROLLER
+====================================================================
+
+What is an Ingress Controller?
+------------------------------
+
+An Ingress Controller is a software that reads the Ingress rules
+and routes incoming traffic to the correct Service.
+
+Simple Definition
+-----------------
+
+Ingress Controller = Software that implements Ingress.
+
+OR
+
+Ingress Controller executes the Ingress rules.
+
+--------------------------------------------------------------------
+
+Why Do We Need an Ingress Controller?
+-------------------------------------
+
+Ingress only contains routing rules.
+
+It cannot route traffic by itself.
+
+An Ingress Controller is required to read those rules
+and forward requests to the correct Service.
+
+Without an Ingress Controller,
+
+Ingress will NOT work.
+
+--------------------------------------------------------------------
+
+How It Works
+------------
+
+User Request
+
+↓
+
+Ingress Controller
+
+↓
+
+Reads Ingress Rules
+
+↓
+
+Forwards Request
+
+↓
+
+Service
+
+↓
+
+Pod
+
+--------------------------------------------------------------------
+
+Architecture
+------------
+
+              Internet
+
+                  |
+
+                  V
+
+        Ingress Controller
+
+                  |
+
+              Ingress Rules
+
+                  |
+
+         ----------------------
+
+         |                    |
+
+   Shop Service         Payment Service
+
+         |                    |
+
+       Pods                 Pods
+
+--------------------------------------------------------------------
+
+View Ingress Controller Pods
+----------------------------
+
+kubectl get pods -n ingress-nginx
+
+--------------------------------------------------------------------
+
+View Ingress
+------------
+
+kubectl get ingress
+
+--------------------------------------------------------------------
+
+What is Persistent Volume (PV)?
+-------------------------------
+
+A Persistent Volume (PV) is a storage resource in Kubernetes.
+
+It provides permanent storage for applications.
+
+Simple Definition
+-----------------
+
+PV = Permanent Storage.
+
+--------------------------------------------------------------------
+
+Who Creates the PV?
+-------------------
+
+Usually,
+
+Cluster Administrator creates the PV.
+
+Example Storage
+
+AWS EBS
+
+Azure Disk
+
+Google Persistent Disk
+
+NFS
+
+Local Disk
+
+--------------------------------------------------------------------
+
+Example
+
+A company creates a 20 GB storage.
+
+This storage is called a Persistent Volume (PV).
+
+--------------------------------------------------------------------
+
+What is Persistent Volume Claim (PVC)?
+--------------------------------------
+
+A Persistent Volume Claim (PVC) is a request for storage.
+
+Applications do not use the PV directly.
+
+Instead,
+
+Pod
+
+↓
+
+PVC
+
+↓
+
+PV
+
+Simple Definition
+-----------------
+
+PVC = Request for Storage.
+
+--------------------------------------------------------------------
+
+Who Creates the PVC?
+--------------------
+
+Application Developer
+
+OR
+
+DevOps Engineer
+
+--------------------------------------------------------------------
+
+Example
+
+Developer needs
+
+10 GB Storage
+
+↓
+
+Creates PVC
+
+↓
+
+Kubernetes finds a matching PV
+
+↓
+
+Storage is assigned
+
+--------------------------------------------------------------------
+
+What is Storage Class (SC)?
+---------------------------
+
+Storage Class is used to automatically create storage.
+
+Simple Definition
+-----------------
+
+Storage Class = Automatic Storage Creator.
+
+--------------------------------------------------------------------
+
+Why Do We Need Storage Class?
+-----------------------------
+
+Without Storage Class
+
+Administrator must manually create PV.
+
+Every time storage is needed.
+
+This is time consuming.
+
+--------------------------------------------------------------------
+
+With Storage Class
+
+Developer creates PVC.
+
+↓
+
+Storage Class automatically creates PV.
+
+↓
+
+Pod gets storage.
+
+Everything happens automatically.
+
+--------------------------------------------------------------------
+
+Simple Architecture
+-------------------
+
+            Pod
+
+             |
+
+             V
+
+            PVC
+
+             |
+
+             V
+
+      Storage Class
+
+             |
+
+             V
+
+             PV
+
+             |
+
+             V
+
+     Physical Storage
+
+--------------------------------------------------------------------
+
+====================================================================
+1. storageclass.yaml
+====================================================================
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+
+metadata:
+  name: local-storage
+
+provisioner: kubernetes.io/no-provisioner
+
+volumeBindingMode: WaitForFirstConsumer
+
+====================================================================
+
+====================================================================
+2. pv.yaml
+====================================================================
+
+apiVersion: v1
+kind: PersistentVolume
+
+metadata:
+  name: my-pv
+
+spec:
+  capacity:
+    storage: 1Gi
+
+  accessModes:
+    - ReadWriteOnce
+
+ 
+  hostPath:
+    path: /data
+
+====================================================================
+
+====================================================================
+3. pvc.yaml
+====================================================================
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+
+metadata:
+  name: my-pvc
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+
+  resources:
+    requests:
+      storage: 1Gi
+
+  storageClassName: local-storage
+
+====================================================================
+
+====================================================================
+4. pod.yaml
+====================================================================
+
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: nginx-pod
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: my-storage
+
+  volumes:
+  - name: my-storage
+
+    persistentVolumeClaim:
+      claimName: my-pvc
+
+====================================================================
+
+KUBERNETES CONFIGMAP & SECRET 
+===================================
+
+
+1. What is ConfigMap?
+
+---
+
+ConfigMap is a Kubernetes object used to store application configuration.
+
+Think of it as a configuration file for your application.
+
+It stores NON-SENSITIVE information.
+
+## Examples:
+
+* Application Name
+* Database Host
+* Database Port
+* Log Level
+* Environment (Dev/Test/Prod)
+
+Example:
+
+APP_NAME=EmployeeApp
+DB_HOST=mysql-service
+DB_PORT=3306
+
+---
+
+2. Why do we use ConfigMap?
+
+---
+
+Without ConfigMap:
+
+Application Code
+|
+|
+DB_HOST = mysql-service
+DB_PORT = 3306
+
+If the database changes, we must modify the application and build a new image.
+
+With ConfigMap:
+
+Application
+|
+|
+ConfigMap
+|
+DB_HOST
+DB_PORT
+APP_NAME
+
+Now we only update the ConfigMap.
+No need to rebuild the Docker image.
+
+---
+
+3. ConfigMap Example YAML
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+name: app-config
+
+data:
+APP_NAME: EmployeeApp
+DB_HOST: mysql-service
+DB_PORT: "3306"
+
+
+Create ConfigMap
+
+kubectl apply -f configmap.yaml
+
+
+
+View ConfigMap
+
+kubectl get configmap
+
+
+How to refer variable?
+
+Example:
+
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: app-pod
+
+spec:
+  containers:
+  - name: app
+    image: nginx
+
+    env:
+    - name: APP_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: APP_NAME
+
+    - name: DB_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: DB_HOST
+
+
+
+---
+
+4. What is Secret?
+
+---
+
+Secret is a Kubernetes object used to store SENSITIVE information.
+
+## Examples:
+
+* Database Password
+* Username
+* API Key
+* JWT Token
+* Certificates
+* SSH Keys
+
+Example:
+
+DB_USERNAME=admin
+DB_PASSWORD=Password123
+
+Never store these values directly in your application code.
+
+---
+
+5. Why do we use Secret?
+
+---
+
+Without Secret
+
+Application
+|
+Password = Password123
+
+Anyone can see the password.
+
+With Secret
+
+Application
+|
+|
+Secret
+|
+Password
+
+The application reads the password from the Secret instead of hardcoding it.
+
+---
+
+6. Create Secret
+
+kubectl create secret generic db-secret 
+--from-literal=DB_USERNAME=admin 
+--from-literal=DB_PASSWORD=Password123
+
+View Secret
+
+kubectl get secret
+
+
+Example:
+-----------
+yaml file
+
+
+apiVersion: v1
+kind: Secret
+
+metadata:
+  name: db-secret
+
+type: Opaque
+
+data:
+  DB_USERNAME: YWRtaW4=
+  DB_PASSWORD: UGFzc3dvcmQxMjM=---
+
+How to refer secret
+
+env:
+- name: DB_USERNAME
+  valueFrom:
+    secretKeyRef:
+      name: db-secret
+      key: DB_USERNAME
+
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: db-secret
+      key: DB_PASSWORD
+
+
+
+
+

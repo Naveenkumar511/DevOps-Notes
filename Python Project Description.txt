@@ -1,0 +1,44 @@
+Project Title
+
+End-to-End CI/CD Pipeline for a Python Web Application using GitHub, Jenkins, Docker, and Kubernetes
+
+Project Description
+
+In this project, students will build a complete DevOps CI/CD pipeline for a Python web application. The objective is to automate the software delivery process from source code commit to deployment on a Kubernetes cluster.
+
+Students will use GitHub as the source code repository, Jenkins to automate the build and deployment pipeline, Docker to containerize the application, and Kubernetes to deploy and manage the application in a production-like environment.
+
+Whenever a developer pushes code to GitHub, Jenkins should automatically:
+
+ - Pull the latest source code.
+ - Build the Docker image.
+ - Push the image to Docker Hub.
+ - Deploy the latest version to the Kubernetes cluster.
+ - Verify that the application is running successfully.
+
+Project Architecture
+==============
+Developer
+    │
+    │ Git Push
+    ▼
+ GitHub Repository
+    │
+    │ Webhook
+    ▼
+ Jenkins Pipeline
+    │
+    ├── Checkout Source Code
+    ├── Build Application
+    ├── Build Docker Image
+    ├── Push Image to Docker Hub
+    └── Deploy to Kubernetes
+              │
+              ▼
+      Kubernetes Cluster
+              │
+              ▼
+      Python Web Application
+
+
+

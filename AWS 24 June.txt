@@ -1,0 +1,2310 @@
+
+Cloud 
+--------
+On Demand delivery of IT services such as server , storage , network & database over the internet with pay-as-you-go model.
+
+Advantages:
+---------------
+
+1. No capital investment  (CapEx)
+2. No need to maintain datacenter
+3. Pay only for what you use
+4. Scalable
+5. Flexible 
+6. Go global in minutes 
+
+
+Types:
+---------
+Deployment model
+-----------------------
+	1. Private cloud (on-premises)
+	2. Public cloud
+	3. Hybrid 
+
+Service Model
+-------------------
+	1. IAAS
+	2. PAAS
+	3. SAAS
+
+
+CSP - Cloud Service Provider
+	 AWS
+	AZURE
+	GCP
+	ORACLE
+	ALIBABA
+	IBM
+
+
+
+Data Center
+
+Region - large geo area whare aws/azure operates their data centers. 
+Availability Zone - Region is made up of availability zones. AZ consist of one or more data centers.
+
+region
+ap-south-1  
+ap-south-1a
+ap-south-1b
+ap-south-1c
+
+
+
+
+
+==================================================
+1. WHAT IS VIRTUALIZATION?
+==================================================
+
+Virtualization is the technology that allows multiple virtual machines (VMs) to run on a single physical server.
+
+Before Virtualization:
+--------------------------------------------------
+1 Physical Server = 1 Operating System
+= Low resource utilization
+= High hardware cost
+
+After Virtualization:
+--------------------------------------------------
+1 Physical Server
+   |
+   |---- VM1 (Linux)
+   |---- VM2 (Windows)
+   |---- VM3 (Ubuntu)
+
+= Better resource utilization
+= Reduced cost
+= Easy management
+
+--------------------------------------------------
+
+How Virtualization Works?
+
+A software called Hypervisor sits between the hardware and virtual machines.
+
+Physical Server
+       |
+   Hypervisor
+       |
+   VM1  VM2  VM3
+
+--------------------------------------------------
+
+Examples of Hypervisors
+
+Type 1 (Bare Metal)
+- VMware ESXi
+- Microsoft Hyper-V
+- Xen
+
+Type 2 (Hosted)
+- VirtualBox
+- VMware Workstation
+
+--------------------------------------------------
+
+Advantages of Virtualization
+
+1. Better hardware utilization
+2. Cost reduction
+3. Faster server provisioning
+4. Easy backup and recovery
+5. Isolation between VMs
+6. Scalability
+
+--------------------------------------------------
+
+Real-Life Example
+
+Suppose a company needs:
+
+- Web Server
+- Database Server
+- Jenkins Server
+
+Without Virtualization:
+3 Physical Servers
+
+With Virtualization:
+1 Physical Server
+3 Virtual Machines
+
+==================================================
+2. WHAT IS CLOUD COMPUTING?
+==================================================
+
+Cloud Computing is the delivery of computing services over the internet instead of owning physical infrastructure.
+
+Services include:
+- Servers
+- Storage
+- Databases
+- Networking
+- Applications
+
+--------------------------------------------------
+
+Traditional IT
+
+Company purchases:
+- Servers
+- Storage
+- Networking devices
+- Data center space
+
+Problems:
+- Expensive
+- Time consuming
+- Maintenance required
+
+--------------------------------------------------
+
+Cloud Computing
+
+Cloud Provider manages infrastructure.
+
+Customer simply uses resources.
+
+Example:
+Launch AWS EC2 server in 2 minutes.
+
+--------------------------------------------------
+
+Definition
+
+Cloud Computing =
+On-demand delivery of IT resources over the internet with pay-as-you-go pricing.
+
+==================================================
+3. TYPES OF CLOUD
+==================================================
+
+A. Public Cloud
+
+Infrastructure owned by cloud provider.
+
+Examples:
+- AWS
+- Microsoft Azure
+- Google Cloud
+
+Advantages:
+- Low cost
+- High scalability
+- No maintenance
+
+Example:
+AWS EC2 instance
+
+--------------------------------------------------
+
+B. Private Cloud
+
+Infrastructure dedicated to a single organization.
+
+Advantages:
+- High security
+- Better control
+
+Examples:
+- VMware Private Cloud
+- OpenStack
+
+Used by:
+- Banks
+- Government organizations
+
+--------------------------------------------------
+
+C. Hybrid Cloud
+
+Combination of Public Cloud and Private Cloud.
+
+Example:
+Database in Private Cloud
+Web Application in AWS
+
+Advantages:
+- Flexibility
+- Security
+- Cost optimization
+
+--------------------------------------------------
+
+D. Multi-Cloud
+
+Using multiple cloud providers.
+
+Example:
+AWS + Azure + Google Cloud
+
+Benefits:
+- Avoid vendor lock-in
+- High availability
+
+==================================================
+4. HISTORY OF AWS
+==================================================
+
+AWS =
+Amazon Web Services
+
+--------------------------------------------------
+
+Before AWS
+
+Amazon had huge infrastructure for its online shopping platform.
+
+Engineers noticed:
+- Building servers repeatedly
+- Managing infrastructure manually
+
+They decided to provide infrastructure as a service.
+
+--------------------------------------------------
+
+AWS Timeline
+
+2002
+AWS concept introduced
+
+2004
+Amazon launched SQS
+(Simple Queue Service)
+
+2006
+AWS officially launched
+
+First major services:
+- EC2 (Virtual Servers)
+- S3 (Storage)
+
+--------------------------------------------------
+
+Growth of AWS
+
+2009
+Elastic Load Balancer
+
+2012
+AWS became market leader
+
+2014
+Lambda introduced
+(Serverless Computing)
+
+2015+
+Massive expansion of cloud services
+
+--------------------------------------------------
+
+Today AWS Provides
+
+- Compute
+- Storage
+- Databases
+- Networking
+- AI/ML
+- Security
+- DevOps Services
+
+More than 200+ cloud services.
+
+--------------------------------------------------
+
+Why AWS Became Popular?
+
+1. First major cloud provider
+2. Pay-as-you-go pricing
+3. Global infrastructure
+4. Reliability
+5. Large service portfolio
+
+==================================================
+5. WHAT IS A DATA CENTER?
+==================================================
+
+A Data Center is a physical facility that contains servers, storage devices, networking equipment, and power systems.
+
+Purpose:
+Store and process data.
+
+--------------------------------------------------
+
+Components of Data Center
+
+1. Servers
+Run applications
+
+2. Storage
+Store data
+
+3. Networking Devices
+Routers
+Switches
+Firewalls
+
+4. Cooling Systems
+Maintain temperature
+
+5. Power Supply
+UPS
+Generators
+
+6. Security Systems
+Biometric access
+CCTV
+
+
+Problems with Traditional Data Centers
+
+1. High cost
+2. Maintenance overhead
+3. Hardware failures
+4. Scaling challenges
+5. Limited availability
+
+--------------------------------------------------
+
+
+EC2 - Elastic Compute Cloud
+====================
+
+==================================================
+1. WHAT IS EC2?
+==================================================
+
+EC2 stands for:
+
+Elastic Compute Cloud
+
+EC2 is a virtual server provided by AWS that allows users to run applications in the cloud.
+
+Simple Definition:
+
+EC2 = Virtual Machine (VM) in AWS
+
+--------------------------------------------------
+
+Real-Life Example
+
+Traditional Method:
+- Buy Physical Server
+- Install OS
+- Configure Network
+- Maintain Hardware
+
+AWS Method:
+- Launch EC2 Instance in minutes
+- Pay only for usage
+
+--------------------------------------------------
+
+Features of EC2
+
+- Virtual Server
+- Scalable
+- Secure
+- Pay-as-you-go
+- Supports Linux & Windows
+
+--------------------------------------------------
+
+Common EC2 Use Cases
+
+- Web Server
+- Application Server
+- Jenkins Server
+- Docker Host
+- Kubernetes Node
+- Database Server
+
+==================================================
+2. INSTANCE TYPES
+==================================================
+
+Instance Type determines:
+
+- CPU
+- RAM
+- Network Performance
+- Storage Performance
+
+--------------------------------------------------
+
+Why Different Instance Types?
+
+Not all applications require the same resources.
+
+Example:
+
+Small Website
+- Less CPU
+- Less RAM
+
+Machine Learning
+- More CPU
+- More RAM
+
+--------------------------------------------------
+
+A. General Purpose
+
+Balanced CPU and Memory.
+
+Examples:
+t2.micro
+t3.micro
+t3.small
+
+Used For:
+- Learning AWS
+- Small applications
+- Web servers
+
+--------------------------------------------------
+
+B. Compute Optimized
+
+More CPU power.
+
+Examples:
+c5.large
+c6i.large
+
+Used For:
+- High-performance applications
+- Gaming servers
+- Batch processing
+
+--------------------------------------------------
+
+C. Memory Optimized
+
+More RAM.
+
+Examples:
+r5.large
+r6i.large
+
+Used For:
+- Databases
+- Caching
+- Analytics
+
+--------------------------------------------------
+
+D. Storage Optimized
+
+High disk performance.
+
+Examples:
+i3.large
+
+Used For:
+- Big data
+- Data warehousing
+
+--------------------------------------------------
+
+Most Common Instance for Beginners
+
+t2.micro
+
+Benefits:
+- Free Tier Eligible
+- Suitable for practice
+
+==================================================
+3. WHAT IS AMI?
+==================================================
+
+AMI stands for:
+
+Amazon Machine Image
+
+AMI is a template used to launch EC2 instances.
+
+--------------------------------------------------
+
+AMI Contains
+
+- Operating System
+- Software Packages
+- Configuration Settings
+- Application Code (optional)
+
+--------------------------------------------------
+
+Examples of AMIs
+
+Ubuntu 22.04
+
+Amazon Linux 2023
+
+Red Hat Enterprise Linux
+
+Windows Server 2022
+
+--------------------------------------------------
+
+Real-Life Example
+
+When buying a new mobile:
+
+Phone Template = Factory Image
+
+In AWS:
+
+AMI = Server Template
+
+--------------------------------------------------
+
+Launch Flow
+
+AMI
+ ↓
+EC2 Instance
+
+--------------------------------------------------
+
+Benefits of AMI
+
+- Faster deployment
+- Standardized servers
+- Easy backups
+
+==================================================
+4. WHAT IS KEY PAIR?
+==================================================
+
+Key Pair is used to securely connect to an EC2 instance.
+
+--------------------------------------------------
+
+Key Pair Consists Of
+
+1. Public Key
+2. Private Key
+
+--------------------------------------------------
+
+Public Key
+
+Stored inside EC2 instance.
+
+--------------------------------------------------
+
+Private Key
+
+Downloaded by user.
+
+Example:
+aws-key.pem
+
+--------------------------------------------------
+
+Purpose
+
+Secure SSH Login
+
+--------------------------------------------------
+
+Connect to Linux EC2
+
+Command:
+
+ssh -i aws-key.pem ubuntu@public-ip
+
+Example:
+
+ssh -i mykey.pem ubuntu@13.234.xx.xx
+
+--------------------------------------------------
+
+Important Notes
+
+- Download key during instance creation
+- Keep .pem file safe
+- AWS cannot recover lost private key
+
+==================================================
+5. WHAT IS SECURITY GROUP?
+==================================================
+
+Security Group acts as a virtual firewall for EC2 instances.
+
+It controls:
+
+- Incoming Traffic
+- Outgoing Traffic
+
+--------------------------------------------------
+
+Example
+
+Allow:
+
+SSH  -> Port 22
+HTTP -> Port 80
+HTTPS -> Port 443
+
+Block:
+All other traffic
+
+--------------------------------------------------
+
+Security Group Rules
+
+Inbound Rules
+- Traffic entering EC2
+
+Outbound Rules
+- Traffic leaving EC2
+
+--------------------------------------------------
+
+Common Ports
+
+22   -> SSH
+
+80   -> HTTP
+
+443  -> HTTPS
+
+3306 -> MySQL
+
+8080 -> Jenkins
+
+6443 -> Kubernetes API
+
+--------------------------------------------------
+
+Benefits
+
+- Improves security
+- Controls access
+- Easy to manage
+- Instance-level firewall
+
+==================================================
+6. EC2 INSTANCE CREATION FLOW
+==================================================
+
+Choose AMI
+        ↓
+Choose Instance Type
+        ↓
+Create Key Pair
+        ↓
+Configure sroup
+        ↓
+Launch EC2 Instance
+
+
+
+
+QUICK REVISION
+==================================================
+
+EC2
+= Virtual Server in AWS
+
+Instance Type
+= CPU + RAM Configuration
+
+AMI
+= Operating System Template
+
+Key Pair
+= Secure Login Method
+
+Security Group
+= EC2 Firewall
+
+t2.micro
+= Free Tier EC2 Instance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Elastic Load Balancer:
+================
+
+	An Elastic Load Balancer (ELB) is a service used to distribute incoming network traffic across multiple servers or instances to ensure high availability and reliability. 
+
+
+Types of Elastic Load Balancers (in AWS):
+--------------------------------------------------
+
+1.Application Load Balancer (ALB)
+
+	Works at Layer 7 (Application Layer) of the OSI model.
+
+	Routes traffic based on content rules (e.g., URL path, hostname).
+
+	Best for web applications and microservices.
+
+2.Network Load Balancer (NLB)
+
+	Works at Layer 4 (Transport Layer).
+
+	Handles TCP, UDP, and TLS traffic.
+
+	Designed for high-performance, low-latency applications.
+
+3.Gateway Load Balancer (GLB)
+
+	Specialized for third-party virtual appliances.
+
+	Useful for security appliances like firewalls or intrusion detection systems.
+
+4.Classic Load Balancer (CLB) [Legacy]
+
+	Operates at both Layer 4 and Layer 7.
+
+	Older service, now mostly replaced by ALB and NLB.
+
+
+
+
+ELB Deployment Models:
+------------------------------
+1.Internet-facing ELB:
+
+	Handles traffic from the public internet.
+
+	Commonly used for web applications (e.g., websites, APIs).
+
+	Example: AWS Elastic Load Balancer with public IPs.
+
+2.Internal ELB (Private)
+
+	Routes traffic within a private network.
+
+	Used for internal services or microservices communication.
+
+	Example: Internal Azure Load Balancer (ILB) for VM-to-VM traffic distribution.
+
+
+1. Health Check:
+
+	A Health Check is a mechanism used by the load balancer to monitor the status of backend servers. It ensures that only healthy servers receive traffic.
+
+2. Target Group:
+	
+	A Target Group is a logical collection of backend servers that the load balancer routes traffic to.
+
+3. Listener:
+
+	A Listener is a process that checks for connection requests from clients on a specific port and protocol.
+
+	It defines how the load balancer receives incoming traffic.
+
+	Listeners use rules to determine how to forward requests to target groups.
+
+4. Rules
+	
+	Rules define how the load balancer routes incoming traffic to specific target groups based on conditions.
+
+Sticky sessions:
+
+	Sticky sessions route requests to the same target in a target group. You enable sticky 
+sessions at the target group level. You can also set the duration for the stickiness of 
+the load balancer-generated cookie, in seconds. Useful if you have stateful 
+applications. 
+
+
+Load Balancer States: 
+--------------------------
+	Provisioning – The load balancer is being set up. 
+	Active – The load balancer is fully set up and ready to route traffic. 
+	Failed – The load balancer could not be set up.
+
+
+==========================================================================
+
+
+Auto Scaling in AWS:
+================ 
+	Auto Scaling in AWS is a service that automatically adjusts the number of EC2 instances (or other resources) based on demand or predefined conditions. It helps you:
+
+	Scale out → Add more instances when demand increases.
+
+	Scale in → Remove instances when demand decreases.
+
+	Maintain availability → Keep a specified number of healthy instances running at all times.
+
+	Optimize costs → Only pay for the resources you actually need.
+
+
+
+Auto Scaling Group (ASG):
+--------------------------------
+	An Auto Scaling Group (ASG) is a collection of EC2 instances managed together. It defines:
+
+		Minimum capacity: The minimum number of instances to keep running.
+
+		Maximum capacity: The maximum number of instances allowed.
+
+		Desired capacity: The target number of instances under normal conditions.
+
+What is a Launch Template in AWS?:
+--------------------------------------------
+	A Launch Template in AWS is a blueprint for launching EC2 instances. It defines the configuration settings required to create new instances, including:
+
+		1.The AMI ID (Amazon Machine Image)
+
+		2.The instance type (e.g., t2.micro, m5.large)
+
+		3.Key pair for SSH/RDP access
+
+		4.Security groups and network settings
+
+		5.IAM role permissions
+
+		6.User data scripts (for initialization tasks)
+
+TYPES OF SCALING
+==================================================
+
+A. SCALE OUT (Horizontal Scaling)
+
+Add more EC2 instances.
+
+Example:
+
+Before:
+EC2-1
+
+After:
+EC2-1
+EC2-2
+EC2-3
+
+Used during:
+- High traffic
+- Increased load
+
+--------------------------------------------------
+
+B. SCALE IN
+
+Remove EC2 instances.
+
+Example:
+
+Before:
+EC2-1
+EC2-2
+EC2-3
+
+After:
+EC2-1
+
+Used during:
+- Low traffic
+
+--------------------------------------------------
+
+C. SCALE UP (Vertical Scaling)
+
+Increase server size.
+
+Example:
+
+t2.micro
+    ↓
+t2.medium
+
+Increase:
+- CPU
+- RAM
+
+--------------------------------------------------
+
+D. SCALE DOWN
+
+Reduce server size.
+
+Example:
+
+t2.medium
+    ↓
+t2.micro
+
+--------------------------------------------------
+
+Most Common in AWS:
+
+Horizontal Scaling
+(Scale Out / Scale In)
+
+
+
+
+
+EC2  ->  Launch app -> AMI  -> Launch Template (Blue print) -> AutoScaling
+
+
+
+
+Amazon EBS (Elastic Block Store):
+=========================
+	Amazon EBS is a scalable, high-performance block storage service used with Amazon EC2 instances. It provides persistent storage that retains data even when the EC2 instance is stopped or terminated.
+
+Key Features of EBS:
+-------------------------
+	1.Persistent Storage: Data on EBS volumes persists independently of the EC2 instance lifecycle.
+
+	2.Scalability: You can increase volume size, adjust performance, or change volume types without downtime.
+
+	3.Snapshots: You can create incremental snapshots of EBS volumes, which are stored in Amazon S3.
+
+	4.Encryption: EBS volumes support encryption at rest using AWS Key Management Service (KMS).
+
+	5.Backup & Restore: You can restore an EBS volume from a snapshot to recover data.
+
+
+
+EBS Volume Types:
+-----------------------
+EBS offers multiple volume types optimized for performance and cost.
+
+SSD-backed volume
+HDD-backed volume
+
+IOPS - Input Output Operation per Second
+
+1.gp3 (General Purpose SSD)
+	
+2.gp2 (General Purpose SSD)	
+	
+3.io1/io2 (Provisioned IOPS SSD)	
+	
+4.st1 (Throughput Optimized HDD)	
+	
+5.sc1 (Cold HDD)	
+	
+
+What is an EBS Snapshot?
+-------------------------------
+	An EBS Snapshot is a point-in-time backup of your EBS volume, stored in Amazon S3. It captures the entire volume's data at a specific moment, allowing you to restore it later or create new volumes from it.
+
+Key Features of EBS Snapshots:
+--------------------------------------
+	1.Incremental Backups:
+
+		After the first full backup, only changed data blocks are saved in subsequent snapshots, making them cost-efficient.
+
+	2.Stored in S3:
+
+		Snapshots are stored in Amazon S3, but you won’t see them directly in S3—it’s managed by AWS.
+
+	3.Cross-Region and Cross-AZ Replication:
+
+		You can copy snapshots to other regions for disaster recovery or backup purposes.
+
+	4.Fast Restore:
+
+		You can restore from a snapshot to create a new EBS volume.
+
+
+
+Create EBS Volume  -> Attach to EC2 -> Format -> mount 
+
+
+
+
+ubuntu@ip-172-31-13-31:~$ #lsblk --fs
+ubuntu@ip-172-31-13-31:~$ #sudo mkfs.xfs /dev/nvme1n1
+ubuntu@ip-172-31-13-31:~$ #mkdir app
+ubuntu@ip-172-31-13-31:~$ #sudo mount /dev/nvme1n1  app
+ubuntu@ip-172-31-13-31:~$ df -h
+
+Resizing
+=======
+xfs_growfs  /dev/nvme1n1  -> for xfs file system
+resize2fs  /dev/nvme1n1	-> for ext file system
+
+
+
+
+
+
+
+
+How to Attach an Amazon EBS Volume to Multiple EC2 Instances:
+--------------------------------------------------------------------------------
+
+	By default, Amazon EBS volumes are designed to be attached to only one EC2 instance at a time. However, AWS offers multi-attach support for io1/io2 volumes, allowing up to 16 instances to access the same volume simultaneously.
+
+Requirements for Multi-Attach:
+---------------------------------------
+ 	1. Volume Type: Only io1 and io2 volumes support multi-attach.
+ 	2. Instances in the Same AZ: All EC2 instances must be in the same Availability Zone (AZ).
+ 	3. File System Compatibility: Use a cluster-aware file system (e.g., Lustre, Oracle ASM, or GPFS) to prevent data corruption.
+ 	4. Supported Instance Types: Only Nitro-based instances (e.g., m5, c5, r5) support multi-attach.
+
+======================================================================
+
+
+Amazon EFS ( Elastic File System )
+========================
+
+	Amazon EFS is a fully managed, scalable file storage service offered by AWS. It provides a shared, elastic, and distributed file system that you can mount across multiple EC2 instances (or containers and Lambda functions) simultaneously. It supports the NFS (Network File System) protocol, making it ideal for Linux-based workloads.
+
+Key Features of EFS:
+--------------------------
+
+	Elastic and Scalable:
+
+		Automatically grows and shrinks as you add or remove files.
+
+		No need to provision storage capacity upfront.
+
+	Shared Access:
+	
+		Multiple EC2 instances can access the same file system concurrently.
+
+		Ideal for distributed applications, web servers, and content management.
+
+	Fully Managed:
+
+		AWS handles infrastructure, capacity, and maintenance.
+
+		You just create and mount the file system.
+
+	Performance Modes:
+
+		General Purpose: Best for latency-sensitive workloads.
+
+		Max I/O: Optimized for high-throughput applications (e.g., big data, media processing).
+
+	Security:
+
+		Supports IAM policies, VPC access, and encryption.
+
+
+
+Common Use Cases for EFS
+-----------------------------------
+
+	Web applications: Shared storage for multiple web servers (e.g., Apache, NGINX).
+
+	Content management systems (CMS): Centralized file repository.
+
+	Data analytics: Shared access for big data processing.
+
+	Container storage: Persistent storage for ECS/EKS.
+
+	Backup and recovery: Centralized file backup.
+
+======================================================================
+
+Amazon S3 (Simple Storage Service)
+==========================
+	Amazon S3 is a scalable, durable, and secure object storage service offered by AWS. It allows you to store and retrieve any amount of data, at any time, from anywhere on the web. S3 is widely used for data lakes, backups, content distribution, and static website hosting.
+
+Key Features of S3
+-----------------------
+
+1. Object Storage:
+
+	S3 stores data as objects inside buckets.
+
+2. Each object consists of:
+
+	Data (the actual content you upload).
+
+3. Metadata (key-value pairs with descriptive info).
+
+	Unique Key (the filename or identifier).
+
+4. Unlimited Storage:
+
+	No limit on the number of objects or total storage capacity.
+
+	Individual objects can be up to 5 TB in size.
+
+5. Versioning & Lifecycle Policies:
+
+	Supports versioning to keep multiple versions of an object.
+
+	Lifecycle policies automate transitioning data to cheaper storage classes.
+
+6. Durability & Availability:
+
+	99.999999999% (11 nines) durability.
+
+	99.99% availability.
+
+7. Security & Compliance:
+
+	Supports encryption (both server-side and client-side).
+
+	IAM policies and Bucket policies control access.
+
+	Compliant with HIPAA, PCI-DSS, ISO, and more.
+
+
+Storage Classes:
+---------------------
+	S3 Standard: For frequently accessed data.
+	
+	S3 Standard-IA (Infrequent Access): Lower-cost storage for less frequently accessed data.
+
+	S3 One Zone-IA: Cheaper, but stores data in a single AZ (Availability Zone).
+
+	S3 Intelligent-Tiering: Automatically moves objects between frequent and infrequent access tiers.
+
+	S3 Glacier ( Instant / Flexible retrieval) : Low-cost archival storage (retrieval in minutes to hours).
+
+	S3 Glacier Deep Archive: Cheapest option for long-term storage (retrieval in hours).
+	
+	S3 Express one zone 
+
+
+Common Use Cases for S3:
+----------------------------------
+	Data lakes & analytics: Store and process massive datasets.
+
+	Backup & recovery: Reliable storage for backups.
+
+	Static website hosting: Host HTML/CSS/JS websites directly from S3.
+
+	Content distribution: Store images, videos, and files for CDNs.
+
+	Data archiving: Use S3 Glacier for low-cost, long-term archiving.
+
+
+
+Amazon S3 Replication
+================
+	Amazon S3 Replication is a feature that automatically copies objects from one S3 bucket to another. It can replicate data within the same AWS region (SRR) or across different regions (CRR), making it useful for backup, disaster recovery, and data distribution.
+
+Types of S3 Replication
+-------------------------------
+
+1.Same-Region Replication (SRR)
+
+	Replicates objects within the same AWS region.
+
+	Use cases:
+
+		Compliance: Maintain multiple copies of data in the same region.
+
+		Log aggregation: Consolidate logs into a single bucket.
+
+2.Cross-Region Replication (CRR)
+
+	Replicates objects to a different AWS region.
+
+	Use cases:
+
+		Disaster recovery: Store a copy in a geographically separate region.
+
+		Latency optimization: Serve content closer to users in another region.
+
+		Compliance: Meet regulatory requirements by keeping copies in multiple regions.
+
+
+
+========================================================================================================
+
+
+AWS Storage Gateway
+================
+
+
+AWS Storage Gateway is a hybrid cloud storage service that connects your on-premises environments (like data centers or branch offices) to AWS Cloud Storage. It allows organizations to seamlessly use AWS storage services such as Amazon S3, Amazon Glacier, and Amazon EBS without fully migrating everything to the cloud immediately.
+
+Type: Hybrid Storage (on-premises to cloud)
+
+Use Cases: Backup, disaster recovery, data migration
+
+Key Features:
+
+File Gateway: Access S3 as a file share
+
+Volume Gateway: Block storage with cloud backups
+
+Tape Gateway: Replace physical tape infrastructure
+
+===========================================================================================
+
+
+
+
+===============================
+AWS IAM (Identity and Access Management)
+
+===============================
+
+1. WHAT IS IAM?
+===============================
+
+IAM (Identity and Access Management) is a Global AWS service used to securely control access to AWS resources.
+
+It helps answer three questions:
+
+• Who can access AWS?
+• What actions can they perform?
+• Which AWS resources can they access?
+
+IAM allows you to create users, groups, roles, and policies to manage permissions.
+
+Example:
+A company has Developers, DevOps Engineers, and Administrators. Each team requires different levels of access. IAM helps provide the correct permissions to each team.
+
+Important:
+IAM is a Global Service. Once created, IAM users and roles are available across all AWS Regions.
+
+--------------------------------------------------
+
+2. WHY DO WE NEED IAM?
+===============================
+
+Without IAM:
+• Everyone would use the AWS Root Account.
+• No control over permissions.
+• High security risk.
+• Difficult to track user activities.
+
+With IAM:
+• Individual user accounts can be created.
+• Permissions can be controlled.
+• User activities can be audited.
+• Security is improved.
+
+Example:
+A developer only needs access to EC2.
+An administrator needs full AWS access.
+IAM allows both users to have different permissions.
+
+--------------------------------------------------
+
+3. FEATURES OF IAM
+===============================
+
+• Centralized access management.
+• Fine-grained permissions.
+• Multi-Factor Authentication (MFA).
+• Temporary security credentials.
+• Integration with AWS services.
+• Supports federation with external identity providers.
+• Password policies.
+• Access Analyzer.
+• Credential reports.
+
+--------------------------------------------------
+
+4. IAM COMPONENTS
+===============================
+
+IAM consists of four major components:
+
+1. Users
+2. Groups
+3. Policies
+4. Roles
+
+--------------------------------------------------
+
+4.1 IAM USERS
+===============================
+
+IAM User represents an individual person or application that requires AWS access.
+
+Examples:
+• Naveen
+• Developer1
+• DevOpsEngineer
+
+Users can access AWS using:
+
+1. AWS Management Console
+2. AWS CLI
+3. AWS SDKs
+
+Types of Credentials:
+
+Console Access:
+• Username
+• Password
+
+Programmatic Access:
+• Access Key ID
+• Secret Access Key
+
+Example:
+
+Developer
+    ↓
+IAM User
+    ↓
+AWS Access
+
+Best Practice:
+Avoid sharing IAM users among multiple people.
+
+--------------------------------------------------
+
+4.2 IAM GROUPS
+===============================
+
+Groups are collections of IAM users.
+
+Instead of assigning permissions to each user individually, permissions are assigned to groups.
+
+Example:
+
+Developers Group
+    ↓
+Developer1
+Developer2
+Developer3
+
+Admins Group
+    ↓
+Admin1
+Admin2
+
+Advantages:
+• Easy management.
+• Permissions managed centrally.
+• Reduces administration effort.
+
+Important Points:
+• Users can belong to multiple groups.
+• Groups cannot contain other groups.
+
+--------------------------------------------------
+
+4.3 IAM POLICIES
+===============================
+
+Policies define permissions.
+
+Policies are JSON documents that determine what actions are allowed or denied.
+
+Policy answers:
+
+• What action?
+• On which resource?
+• Allow or deny?
+
+Basic Policy Structure:
+
+{
+    "Version":"2012-10-17",
+    "Statement":[
+        {
+            "Effect":"Allow",
+            "Action":"",
+            "Resource":""
+        }
+    ]
+}
+
+Policy Elements:
+
+Version:
+Specifies policy language version.
+
+Effect:
+• Allow
+• Deny
+
+Action:
+Defines operations.
+
+Examples:
+• s3:GetObject
+• ec2:StartInstances
+• ec2:StopInstances
+
+Resource:
+Defines AWS resources.
+
+Example:
+arn:aws:s3:::mybucket/*
+
+--------------------------------------------------
+
+4.4 IAM ROLES
+===============================
+
+IAM Roles provide temporary permissions.
+
+Roles do NOT have:
+
+• Passwords
+• Access Keys
+
+Roles are assumed when needed.
+
+Workflow:
+
+User/Application
+       ↓
+Assume Role
+       ↓
+Temporary Credentials
+       ↓
+Access AWS Resources
+
+Advantages:
+• More secure.
+• No long-term credentials.
+• Easy cross-service access.
+
+--------------------------------------------------
+
+5. TYPES OF IAM POLICIES
+===============================
+
+5.1 AWS MANAGED POLICIES
+
+Created and maintained by AWS.
+
+Examples:
+• AdministratorAccess
+• AmazonS3ReadOnlyAccess
+• AmazonEC2ReadOnlyAccess
+
+Advantages:
+• Ready to use.
+• Automatically updated.
+
+Disadvantages:
+• May provide excessive permissions.
+
+--------------------------------------------------
+
+5.2 CUSTOMER MANAGED POLICIES
+
+Created by customers.
+
+Advantages:
+• Fully customizable.
+• Reusable.
+
+Example:
+Allow only:
+• EC2 Start
+• EC2 Stop
+• EC2 Describe
+
+Used in organizations requiring strict security.
+
+--------------------------------------------------
+
+5.3 INLINE POLICIES
+
+Policies embedded directly into users, groups, or roles.
+
+Characteristics:
+• One-to-one relationship.
+• Cannot be reused.
+• Deleted along with the identity.
+
+Use Case:
+Special permissions for a single user.
+
+--------------------------------------------------
+
+6. IAM ROLES AND USE CASES
+===============================
+
+6.1 EC2 ROLE
+
+Problem:
+EC2 instances need S3 access.
+
+Bad Practice:
+
+EC2
+ ↓
+Hardcoded Access Keys
+ ↓
+S3
+
+Good Practice:
+
+EC2
+ ↓
+IAM Role
+ ↓
+S3
+
+Benefits:
+• Improved security.
+• No access key management.
+
+--------------------------------------------------
+
+6.2 LAMBDA ROLE
+
+Lambda Function
+       ↓
+IAM Role
+       ↓
+CloudWatch Logs
+
+Use:
+Allows Lambda to interact with AWS services.
+
+--------------------------------------------------
+
+6.3 CROSS-ACCOUNT ROLE
+
+Account A
+     ↓
+Assume Role
+     ↓
+Account B
+
+Use:
+Access resources across AWS accounts.
+
+Common in enterprise environments.
+
+--------------------------------------------------
+
+6.4 CI/CD ROLE
+
+Jenkins/GitHub Actions
+          ↓
+IAM Role
+          ↓
+Deploy Applications
+
+Use:
+Secure deployments without storing credentials.
+
+--------------------------------------------------
+
+7. IAM BEST PRACTICES
+===============================
+
+7.1 Avoid Using Root User
+
+Use Root Account only for:
+
+• Initial setup.
+• Billing changes.
+• Closing AWS account.
+
+Never use root for daily operations.
+
+--------------------------------------------------
+
+7.2 Enable MFA
+
+Enable MFA for:
+
+• Root user.
+• Privileged IAM users.
+
+Authentication:
+
+Password
+   +
+OTP
+
+Benefits:
+Provides additional security.
+
+--------------------------------------------------
+
+7.3 Follow Least Privilege
+
+Provide only necessary permissions.
+
+Bad Example:
+AdministratorAccess
+
+Good Example:
+S3 Read-Only Access
+
+Benefits:
+Reduces security risks.
+
+--------------------------------------------------
+
+7.4 Use Groups
+
+Instead of assigning permissions individually:
+
+Bad:
+50 Users
+↓
+50 Separate Policies
+
+Good:
+Developers Group
+QA Group
+Admins Group
+
+Benefits:
+Simplifies management.
+
+--------------------------------------------------
+
+7.5 Rotate Access Keys
+
+Regularly rotate:
+
+• Access Key ID
+• Secret Access Key
+
+Benefits:
+Reduces risk of credential compromise.
+
+--------------------------------------------------
+
+7.6 Use Roles Instead of Access Keys
+
+Preferred:
+
+EC2
+ ↓
+IAM Role
+ ↓
+S3
+
+Avoid:
+
+EC2
+ ↓
+Access Keys
+ ↓
+S3
+
+--------------------------------------------------
+
+7.7 Review Permissions Regularly
+
+Use:
+
+• IAM Access Analyzer
+• Credential Reports
+• CloudTrail
+
+Benefits:
+Identify excessive permissions.
+
+--------------------------------------------------
+
+8. AUTHENTICATION VS AUTHORIZATION
+===============================
+
+Authentication:
+"Who are you?"
+
+Examples:
+• Username
+• Password
+• MFA
+
+Authorization:
+"What can you do?"
+
+Examples:
+• IAM Policies
+• Allowed Actions
+
+Example:
+
+Login to AWS
+      ↓
+Authentication
+
+Open EC2 Console
+      ↓
+Authorization
+
+--------------------------------------------------
+
+9. REAL-TIME DEVOPS SCENARIOS
+===============================
+
+Scenario 1:
+EC2 Accessing S3
+
+Problem:
+Developers stored AWS keys inside EC2.
+
+Solution:
+Create IAM Role
+Attach S3 Policy
+Assign Role to EC2
+Remove Access Keys
+
+Result:
+Improved security.
+
+--------------------------------------------------
+
+Scenario 2:
+Developer Read-Only Access
+
+Requirement:
+Developers can view EC2 instances but cannot stop them.
+
+Solution:
+Create Developer Group
+Attach EC2 ReadOnly Policy
+Add Developers to Group
+
+Result:
+Controlled access.
+
+--------------------------------------------------
+
+Scenario 3:
+Jenkins Deployment
+
+Requirement:
+Jenkins deploys applications to AWS.
+
+Solution:
+Jenkins
+   ↓
+Assume IAM Role
+   ↓
+Deploy Resources
+
+Result:
+No permanent credentials required.
+
+--------------------------------------------------
+
+Scenario 4:
+Cross-Account Backup
+
+Requirement:
+Backup team accesses another AWS account.
+
+Solution:
+Create Cross-Account Role
+Configure Trust Relationship
+Assume Role
+
+Result:
+Secure cross-account access.
+
+--------------------------------------------------
+
+10. INTERVIEW QUESTIONS
+===============================
+
+Q1. What is IAM?
+IAM is a global AWS service used to securely manage authentication and authorization to AWS resources.
+
+Q2. Is IAM global or regional?
+IAM is a Global Service.
+
+Q3. What are the components of IAM?
+Users, Groups, Policies, and Roles.
+
+Q4. What is the difference between User and Role?
+Users have permanent credentials.
+Roles provide temporary credentials.
+
+Q5. What is the Principle of Least Privilege?
+Grant only the permissions required to perform a task.
+
+Q6. What is MFA?
+Multi-Factor Authentication adds an extra layer of security using OTP.
+
+Q7. Can a user belong to multiple groups?
+Yes.
+
+Q8. Can groups contain other groups?
+No.
+
+Q9. Why use Roles instead of Access Keys?
+Roles eliminate the need for long-term credentials.
+
+Q10. What is a Trust Relationship?
+A policy that defines who can assume a role.
+
+--------------------------------------------------
+
+11. IAM CHEAT SHEET
+===============================
+
+IAM = Identity and Access Management
+
+IAM Components:
+✓ Users
+✓ Groups
+✓ Policies
+✓ Roles
+
+Policy Types:
+✓ AWS Managed
+✓ Customer Managed
+✓ Inline
+
+Security Best Practices:
+✓ Avoid Root User
+✓ Enable MFA
+✓ Least Privilege
+✓ Use Groups
+✓ Rotate Keys
+✓ Use Roles
+✓ Review Permissions
+
+Remember:
+
+Authentication = Who are you?
+Authorization = What can you do?
+
+Interview One-Line Answer:
+
+"IAM is a global AWS service that securely manages access to AWS resources through users, groups, policies, and roles by implementing the principle of least privilege."
+
+-------------------------------------------------------------------------------------------------------------------------
+
+========================================================================================================
+
+VPC (Virtual Private Cloud):
+=====================
+
+	A VPC (Virtual Private Cloud) in AWS (Amazon Web Services) is a logically isolated network within the AWS cloud where you can launch and manage AWS resources. It allows you to define your own network configuration, including IP address ranges, subnets, route tables, and security settings.
+
+Key Features of AWS VPC:
+--------------------------------
+1. Private and Public Subnets 
+	You can create subnets within a VPC, some with internet access (public) and some without (private).
+
+2. Security Controls 
+	Use Security Groups (firewall rules for instances) and Network ACLs (firewall rules for subnets).
+
+3. Custom IP Addressing  
+	Define your own IP range using CIDR (Classless Inter-Domain Routing).
+
+4. Internet Gateway (IGW)  
+	Allows public access to resources in a public subnet.
+
+5. NAT Gateway 
+	Enables instances in private subnets to access the internet securely.
+
+6. VPC Peering  
+	Connects two VPCs to allow communication between them.
+
+7. VPC Endpoints  
+	Connects your VPC privately to AWS services without using the internet.
+
+10.0.0.0/24 256 251
+10.0.0.0: Network address.
+10.0.0.1: Reserved by AWS for the VPC router.
+10.0.0.2: Reserved by AWS for DNS
+10.0.0.3: Reserved by AWS for future use.
+10.0.0.255: Network broadcast address- Broadcast is not supported in VPC but, 
+AWS reserves this IP address.
+
+
+Subnet:
+---------
+	A Subnet in AWS is a segment of a VPC’s IP address range that allows you to organize and control network traffic within your Amazon Virtual Private Cloud (VPC). Each subnet is confined to a single Availability Zone (AZ) and can be categorized as either public or private, depending on its route table configuration.
+
+
+Route Table:
+---------------
+	A Route Table in AWS is a set of rules (routes) that determine how network traffic is directed within a VPC (Virtual Private Cloud). Every subnet in a VPC must be associated with a route table, which controls where outgoing traffic is sent.
+
+
+Internet Gateway (IGW):
+------------------------------
+	An Internet Gateway (IGW) in AWS is a highly available and scalable component that allows instances in a public subnet within an Amazon VPC (Virtual Private Cloud) to access the internet and receive inbound traffic. It serves as a bridge between the AWS network and the external internet.
+
+
+NAT Gateway:
+-----------------
+	A NAT Gateway (Network Address Translation Gateway) in AWS allows instances in a private subnet to initiate outbound internet traffic while preventing inbound connections from the internet.
+
+
+Elastic IP (EIP):
+-------------------
+	An Elastic IP (EIP) in AWS is a static, public IPv4 address that you can allocate to your AWS account and assign to resources, such as EC2 instances, NAT Gateways, or Load Balancers. It allows you to maintain a consistent public IP address even if you stop, restart, or replace an instance.
+
+=====================================================================================
+
+VPC peering:
+=========
+	VPC peering (Virtual Private Cloud peering) is a networking connection that allows you to route traffic privately between two VPCs (Virtual Private Clouds), as if they were on the same network.
+
+Key Points:
+--------------
+	1. Private communication: Traffic between peered VPCs stays within the cloud provider’s backbone network (no public internet involved).
+
+	2. Cross-account or same account: You can peer VPCs within the same account or between different accounts.
+
+	3. One-to-one relationship: Each VPC peering connection is between two VPCs. If VPC A is peered with B, and B is peered with C, A is not automatically peered with C (no transitive peering).
+
+	4. Low latency and high throughput: Useful for workloads that require fast, secure, and private communication between VPCs.
+
+Common Use Cases:
+-------------------------
+Microservices in separate VPCs
+
+Shared services (like centralized logging or authentication)
+
+Merging environments (e.g., development and production VPCs)
+
+=====================================================================================
+
+Transit Gateway:
+============
+	A Transit Gateway is a cloud networking service that acts as a central hub to connect multiple VPCs and on-premises networks through a single gateway.
+
+	Think of it like a hub-and-spoke model, where the Transit Gateway is the hub, and VPCs or VPN connections are the spokes.
+
+Key Features:
+----------------
+	Scalable: Connect hundreds of VPCs without creating complex peering meshes.
+
+	Centralized routing: Manage all routing rules from a single point instead of updating each VPC individually.
+
+	Supports VPN and Direct Connect: You can hook up your on-premises network via site-to-site VPN or AWS Direct Connect.
+
+	No transitive peering limitation: Unlike VPC peering, it allows transitive routing—e.g., VPC A can talk to VPC C via the Transit Gateway, even if they aren't directly connected.
+
+
+Resource	Default Limit (per Region)
+VPCs	5
+Subnets per VPC	200
+Internet Gateways	5
+NAT Gateways per AZ	5
+VPC Endpoints (Interface + Gateway)	50
+Elastic IPs	5
+Route Tables per VPC	200
+Security Groups per VPC	2500
+
+
+What is Amazon RDS?
+================
+	Amazon RDS is a managed relational database service that helps developers and DBAs deploy and operate relational databases in the cloud without having to manage the underlying infrastructure (e.g., hardware, OS, database software, backups, etc.).
+
+	It’s part of AWS’s PaaS (Platform-as-a-Service) offerings.
+
+Why Use RDS?
+-----------------
+
+	Traditionally, setting up a database involves:
+
+	Installing and configuring the database software
+
+	Patching and updating
+
+	Setting up backups
+
+	Ensuring high availability
+
+	Scaling with demand
+
+	RDS handles all of this for you, so you can focus on using the database, not managing it.
+
+Supported Database Engines:
+------------------------------------
+
+Amazon Aurora		AWS-optimized, super fast, MySQL & PostgreSQL compatible
+MySQL				Popular open-source option
+PostgreSQL			Advanced open-source DB with strong features
+MariaDB				MySQL fork, also open source
+Oracle				Enterprise-grade, requires license
+SQL Server			From Microsoft, great for Windows-heavy shops
+IBM DB2
+
+Key Features:
+-----------------
+
+1. Provisioning and Configuration
+	Pick your DB engine, version, and instance size.
+
+	Select storage (SSD-backed: General Purpose (gp3), Provisioned IOPS).
+
+	Choose your VPC/subnet for networking.
+
+2. Backups
+	Automated backups: Daily backups + transaction logs (point-in-time recovery up to 35 days).
+
+	Manual snapshots: You can create and keep these as long as you want.
+
+3. High Availability with Multi-AZ
+	Automatically replicates your DB to a standby instance in another AZ (Availability Zone).
+
+	In case of failure, RDS fails over automatically.
+
+	Multi-AZ is for HA (High Availability), not scaling reads.
+
+4. Read Replicas
+	Replicate data asynchronously to other RDS instances.
+
+	Useful for read-heavy apps (e.g., analytics, reporting).
+
+	Can also promote a read replica to become the master (manual failover).
+
+5. Monitoring & Security
+	Amazon CloudWatch for metrics (CPU, memory, storage).
+
+	Enhanced Monitoring for OS-level metrics.
+
+	IAM integration for access control.
+
+	Encryption using KMS (for storage, backups, and snapshots).
+
+	Supports VPC (private networking) and security groups (firewall rules).
+
+6. Maintenance
+	AWS applies patches/upgrades during your defined maintenance window.
+
+	Minor version updates are automatic; major version upgrades are optional.
+
+
+mysql -u admin -h <db-endpoint>  -p -P 3306
+
+===============================================================
+
+
+CloudWatch:
+==========
+	CloudWatch is a monitoring and observability service provided by Amazon Web Services (AWS). It's used to collect and track metrics, collect and monitor log files, set alarms, and automatically respond to changes in your AWS environment.
+
+Key Features:
+-----------------
+1. Metrics Monitoring
+
+	Tracks metrics like CPU usage, memory, disk I/O, network traffic, etc., from AWS resources like EC2, RDS, Lambda, and more.
+
+2. Log Monitoring (CloudWatch Logs)
+
+	Collects and stores logs from AWS services and applications. You can search, filter, and analyze logs in near real-time.
+
+3. Alarms
+
+	Set thresholds on metrics and trigger alarms if they're crossed (e.g., send notification if CPU usage > 80%).
+
+4. Dashboards
+
+	Custom dashboards to visualize data from multiple AWS resources in one place.
+
+5. Events (CloudWatch Events / EventBridge)
+
+	Respond to events (e.g., a change in an EC2 state) and trigger actions like starting a Lambda function or sending a message.
+
+6. CloudWatch Agent
+
+	Can be installed on servers (even outside AWS) to push custom metrics and logs to CloudWatch.
+
+Use Cases:
+-------------
+	Monitoring performance and resource utilization
+
+	Troubleshooting issues using logs
+
+	Automating responses to incidents
+
+	Setting up alerts for system health
+
+	Creating operational dashboards
+
+	
+CloudWatch Alarm:
+------------------------
+	A CloudWatch Alarm in AWS is a tool that helps you automatically monitor AWS resources and applications by watching a specific metric or a mathematical expression of multiple metrics, and triggering actions when a specified threshold is breached.
+
+What It Does:
+----------------
+	A CloudWatch Alarm continuously monitors a metric, and when that metric crosses a threshold you set (either above or below), it performs an action like:
+
+		Sending a notification (via Amazon SNS)
+
+		Auto-scaling an EC2 instance
+
+		Restarting, stopping, or terminating an EC2 instance
+
+		Executing an AWS Systems Manager Automation runbook
+
+========================================================================================================
+
+CloudTrail:
+========
+
+	AWS CloudTrail is a service that helps you track user activity and API usage across your AWS environment. It’s basically like a security camera for your AWS account—it records who did what, when, and from where.
+
+What CloudTrail Does:
+---------------------------
+Records every API call made in your account (including from AWS Management Console, SDKs, CLI, and other AWS services).
+
+Captures event history of your AWS account activity, including:
+
+	Who made the request (IAM user/role/service)
+
+	When it happened
+
+	What resources were affected
+
+	Source IP address
+
+	Whether the action was successful
+
+Why It’s Useful:
+-------------------
+	Security & Compliance – Detect suspicious activity and meet auditing requirements.
+
+	Operational Troubleshooting – See what changes were made before something broke.
+
+	Governance – Understand usage patterns and access behavior.
+
+Where It Stores Data:
+--------------------------
+You can set CloudTrail to deliver logs to S3 buckets, and optionally to CloudWatch Logs or EventBridge for alerting and automation.
+
+
+=============================================================================
+
+
+Lambda:
+======
+
+	AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers. You just upload your code, set a trigger, and AWS takes care of everything else—scaling, running, and maintaining the infrastructure.
+
+In Simple Terms:
+--------------------
+Lambda is like saying: “Here’s my code. Run it when this thing happens.”
+
+Key Features:
+----------------
+	No servers to manage – AWS handles everything
+
+	Auto-scaling – Runs your code in parallel in response to triggers
+
+	Pay-per-use – You only pay for the compute time your code actually uses (down to the millisecond)
+
+	Supports multiple languages – Python, Node.js, Java, Go, .NET, Ruby, etc.
+
+Common Triggers:
+----------------------
+	API Gateway – Run a function when an HTTP request is made
+
+	S3 – Run a function when a file is uploaded
+
+	DynamoDB Streams – React to changes in your NoSQL database
+
+	CloudWatch Events – Run on a schedule or in response to AWS events
+
+	SNS/SQS – Process messages from topics or queues
+
+Example Use Case:
+-----------------------
+	Let’s say you upload a photo to an S3 bucket:
+
+		An S3 event triggers a Lambda function
+
+		Lambda resizes the image and stores it in another bucket
+
+		You didn’t have to create or manage any servers to make that happen 
+
+Anatomy of a Lambda:
+---------------------------
+	Handler Function – Your main code entry point
+
+	Event Object – Contains the data that triggered the function
+
+	Context Object – Info about the execution environment (timeouts, request ID, etc.)
+
+
+
+=================================================================================
+
+Amazon Q
+========
+
+	Amazon Q is a generative AI–powered assistant from AWS that helps users work faster by answering questions, generating content, and providing insights using AWS services and enterprise data.
+
+What Amazon Q is
+
+	Amazon Q is an AI assistant designed for developers, IT teams, and business users. It helps with cloud operations, software development, and business tasks using natural language.
+
+Types of Amazon Q
+------------------------
+
+Amazon Q Developer
+	Used by developers and IT professionals to write code, debug applications, generate infrastructure templates, and troubleshoot AWS services.
+
+Amazon Q Business
+	Used by business users to ask questions about company data, generate reports, summarize documents, and automate tasks across enterprise systems.
+============================================================
+
+
+Amazon Bedrock
+==============
+
+	Amazon Bedrock is a fully managed AWS service that allows developers to build, customize, and deploy generative AI applications using foundation models without managing infrastructure.
+
+What Amazon Bedrock does
+
+	Amazon Bedrock provides access to pre-trained foundation models from multiple AI providers through a single API. Developers can use these models to create AI applications such as chatbots, text generators, and summarization tools.
+
+Foundation models available
+
+Amazon Bedrock provides models from:
+Amazon Titan
+Anthropic Claude
+Meta Llama
+Mistral
+Cohere
+Stability AI
+
+You can choose a model based on performance, cost, and use case.
+
+Key features of Amazon Bedrock
+
+Single API access
+All foundation models are accessed through one consistent API.
+
+No infrastructure management
+AWS handles servers, scaling, availability, and maintenance.
+
+Customization options
+Models can be customized using prompt engineering, fine-tuning, and Retrieval Augmented Generation (RAG) with data from sources like Amazon S3 and OpenSearch.
+
+Security and privacy
+Customer data is not used to train public models.
+Integrated with IAM, VPC, and KMS.
+Enterprise-level security and compliance.
+
+Common use cases
+
+Building chatbots and virtual assistants
+Text summarization and content generation
+Question answering over documents
+Code generation and explanation
+Image generation
+AI-powered business applications
+
+
+
+
+
+
+
+
+

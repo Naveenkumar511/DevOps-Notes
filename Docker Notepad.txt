@@ -1,0 +1,1066 @@
+Docker Image Commands
+--------------------------------
+
+docker pull <image>             		 # Download image from registry
+docker build -t <name>:<tag> .   	# Build image from Dockerfile
+docker images                   		 # List images
+docker rmi <image>               		# Remove image
+docker tag <image> <new_name>    # Tag image
+docker push <image>              	# Push image to registry
+docker image prune               		# Remove unused images
+
+Container Commands
+----------------------------
+
+
+docker run <image>                       # Run container
+docker run -it <image> bash              # Run interactive container
+docker run -d <image>                    # Run in detached mode
+docker run -p 8080:80 <image>            # Port mapping
+docker run --name mycontainer <image>    # Name container
+docker ps                                # List running containers
+docker ps -a                             # List all containers
+docker stop <container>                  # Stop container
+docker start <container>                 # Start container
+docker restart <container>               # Restart container
+docker rm <container>                    # Remove container
+docker exec -it <container> bash         # Exec into running container
+docker logs <container>                  # View logs
+docker inspect <container>               # Detailed info
+docker stats                             # Live resource usage
+
+
+Docker Volume 
+-------------------
+What is a Docker volume?
+
+A volume is a special storage area managed by Docker that exists outside the container’s filesystem
+
+
+Why use volumes?
+	Persist data (databases, uploads, logs)
+	Share data between containers
+	Avoid bloating container images
+	Improve performance vs bind mounts (in many cases)
+
+Types of storage in Docker
+
+1. Volumes (recommended
+	Managed by Docker
+	Stored in /var/lib/docker/volumes/ (Linux)
+	Easy to back up and move
+
+2. Bind mounts
+	Map a host directory directly
+	Example: ./app:/usr/src/app
+	More control, but less portable
+
+3. tmpfs mounts
+	Stored in memory only
+	Good for sensitive or temporary data
+
+Docker volume commands
+--------------------------------
+docker volume create name		-	Create volume
+docker volume ls				- 	List volumes
+docker volume inspect name		-	Show details
+docker volume rm name			-	Remove volume
+docker volume prune			-	Remove unused volumes
+docker run -v vol:/path image		-	Mount volume
+
+
+
+========================
+DOCKERFILE - 
+========================
+
+What is Dockerfile?
+-------------------
+A Dockerfile is a text file that contains instructions to build a Docker Image.
+
+It automates:
+- Application setup
+- Dependency installation
+- Environment configuration
+- Application execution
+
+Docker reads the Dockerfile and creates an image using:
+docker build command
+
+
+Dockerfile Workflow
+-------------------
+
+Dockerfile  --->  Docker Image  --->  Docker Container
+
+- Dockerfile = Recipe
+- Image = Packaged application
+- Container = Running application
+
+
+Basic Dockerfile Example
+------------------------
+
+FROM node:18
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+
+
+
+
+==============================
+MAIN DOCKERFILE INSTRUCTIONS
+==============================
+
+1. FROM
+--------
+Used to specify the base image.
+
+Syntax:
+FROM <image_name>
+
+Example:
+FROM ubuntu
+FROM python:3.11
+
+Purpose:
+- Starting point of Docker image
+- Every Dockerfile must begin with FROM
+
+
+2. WORKDIR
+-----------
+Sets the working directory inside the container.
+
+Syntax:
+WORKDIR <directory>
+
+Example:
+WORKDIR /app
+
+Purpose:
+- All commands execute inside this folder
+
+
+3. COPY
+--------
+Copies files from local system to container.
+
+Syntax:
+COPY <source> <destination>
+
+Example:
+COPY . .
+
+Purpose:
+- Transfer application files into container
+
+
+4. RUN
+-------
+Executes commands during image build.
+
+Syntax:
+RUN <command>
+
+Example:
+RUN apt update
+RUN npm install
+
+Purpose:
+- Install packages
+- Configure environment
+- Execute setup commands
+
+
+5. EXPOSE
+----------
+Specifies application port.
+
+Syntax:
+EXPOSE <port_number>
+
+Example:
+EXPOSE 80
+EXPOSE 3000
+
+Purpose:
+- Tells Docker which port the application uses
+
+
+6. CMD
+-------
+Defines default command to run container.
+
+Syntax:
+CMD ["command"]
+
+Example:
+CMD ["python", "app.py"]
+
+Purpose:
+- Starts the application when container runs
+
+
+7. ENV
+-------
+Sets environment variables.
+
+Syntax:
+ENV key=value
+
+Example:
+ENV APP_ENV=production
+
+Purpose:
+- Store configuration values
+
+
+8. ENTRYPOINT
+--------------
+Defines the main container command.
+
+Syntax:
+ENTRYPOINT ["command"]
+
+Example:
+ENTRYPOINT ["nginx"]
+
+Purpose:
+- Makes container run as executable
+
+
+==============================
+SIMPLE DOCKERFILE EXAMPLE
+==============================
+
+FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+
+
+
+
+==================================================
+BUILD DOCKER IMAGE & PUSH TO DOCKER HUB
+==================================================
+
+Step 1: Create Dockerfile
+-------------------------
+
+Example Dockerfile:
+
+FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "app.py"]
+
+
+--------------------------------------------------
+
+Step 2: Build Docker Image
+--------------------------
+
+Syntax:
+docker build -t <image_name> .
+
+Example:
+docker build -t myapp .
+
+Explanation:
+- build  -> create image
+- -t     -> tag image name
+- .      -> current directory
+
+
+Check Images:
+-------------
+docker images
+
+
+--------------------------------------------------
+
+Step 3: Create Docker Hub Account
+---------------------------------
+
+Go to:
+[Docker Hub](https://hub.docker.com?utm_source=chatgpt.com)
+
+Create account if not already created.
+
+
+--------------------------------------------------
+
+Step 4: Login to Docker Hub
+---------------------------
+
+Command:
+docker login
+
+Enter:
+- Docker Hub username
+- Password
+
+
+--------------------------------------------------
+
+Step 5: Tag Docker Image
+------------------------
+
+Syntax:
+docker tag <local_image> <dockerhub_username>/<image_name>
+
+Example:
+docker tag myapp naveenkumar/myapp
+
+Explanation:
+- myapp                  -> local image
+- naveenkumar/myapp     -> Docker Hub repository name
+
+
+--------------------------------------------------
+
+Step 6: Push Image to Docker Hub
+--------------------------------
+
+Syntax:
+docker push <dockerhub_username>/<image_name>
+
+Example:
+docker push naveenkumar/myapp
+
+
+--------------------------------------------------
+
+Step 7: Verify in Docker Hub
+----------------------------
+
+Open Docker Hub account:
+- Repositories section
+- Image will appear there
+
+
+--------------------------------------------------
+
+Useful Commands
+----------------
+
+View images:
+docker images
+
+View running containers:
+docker ps
+
+Remove image:
+docker rmi <image_name>
+
+Pull image from Docker Hub:
+docker pull naveenkumar/myapp
+
+Run image:
+docker run naveenkumar/myapp
+
+
+--------------------------------------------------
+
+Complete Workflow
+-----------------
+
+1. Create Dockerfile
+2. Build image
+3. Login to Docker Hub
+4. Tag image
+5. Push image
+
+Flow:
+
+Dockerfile
+    ↓
+Docker Image
+    ↓
+Docker Hub
+    ↓
+Pull & Run Anywhere
+
+
+
+---------------------------------------------------------------------------------
+
+=====================================================
+DOCKERFILE, MULTI-STAGE DOCKERFILE, DOCKER COMPOSE &
+DOCKER SWARM
+=====================================================
+
+1. DOCKERFILE
+=============
+
+Definition:
+-----------
+A Dockerfile is a text file that contains instructions to automatically build a Docker image.
+
+It defines:
+- Base image
+- Application files
+- Dependencies
+- Environment
+- Startup command
+
+Workflow:
+---------
+Dockerfile
+      ↓
+docker build
+      ↓
+Docker Image
+      ↓
+docker run
+      ↓
+Docker Container
+
+Example:
+--------
+FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["python","app.py"]
+
+Advantages:
+-----------
+- Automated image creation
+- Consistent environment
+- Easy deployment
+- Version controlled
+- Reusable
+
+
+=====================================================
+
+2. MULTI-STAGE DOCKERFILE
+=========================
+
+Definition:
+-----------
+A Multi-stage Dockerfile uses multiple FROM instructions to separate the build environment from the runtime environment.
+
+Purpose:
+--------
+- Reduce image size
+- Improve security
+- Remove unnecessary build tools
+- Faster deployment
+
+Workflow:
+---------
+
+Stage 1 (Build)
+---------------
+Compile application
+Install dependencies
+
+        ↓
+
+Stage 2 (Runtime)
+-----------------
+Copy only required files
+Run application
+
+Only the final stage becomes the Docker image.
+
+Example:
+--------
+
+# Build Stage
+FROM maven:3.9-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY . .
+
+RUN mvn clean package
+
+
+# Runtime Stage
+FROM eclipse-temurin:17
+
+WORKDIR /app
+
+COPY --from=build /app/target/app.jar app.jar
+
+CMD ["java","-jar","app.jar"]
+
+Advantages:
+-----------
+- Smaller images
+- Faster downloads
+- Better security
+- Production ready
+- Less storage usage
+
+
+=====================================================
+
+3. DOCKER COMPOSE
+=================
+
+Definition:
+-----------
+Docker Compose is a tool used to define and manage multiple Docker containers using a single YAML file (docker-compose.yml).
+
+Instead of starting containers one by one, Docker Compose starts all services together.
+
+Example:
+--------
+Application:
+- Frontend
+- Backend
+- Database
+
+Without Compose:
+----------------
+docker run mysql
+
+docker run backend
+
+docker run frontend
+
+With Compose:
+-------------
+docker compose up
+
+Everything starts automatically.
+
+Example docker-compose.yml:
+---------------------------
+
+version: "3"
+
+services:
+
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+Common Commands:
+----------------
+
+Start services:
+docker compose up
+
+Run in background:
+docker compose up -d
+
+Stop services:
+docker compose down
+
+View containers:
+docker compose ps
+
+Advantages:
+-----------
+- Easy multi-container management
+- Single configuration file
+- Easy networking
+- Easy volume management
+- Good for development and testing
+
+
+=====================================================
+
+4. DOCKER SWARM
+===============
+
+Definition:
+-----------
+Docker Swarm is Docker's native container orchestration tool used to manage multiple Docker hosts as a single cluster.
+
+Purpose:
+--------
+- Deploy applications across multiple servers
+- High availability
+- Load balancing
+- Auto recovery
+- Scaling
+
+Cluster Architecture:
+---------------------
+
+            Manager Node
+                 |
+        -------------------
+        |        |        |
+    Worker1   Worker2   Worker3
+
+Manager Node:
+-------------
+- Controls the cluster
+- Schedules containers
+- Maintains cluster state
+
+Worker Node:
+------------
+- Runs application containers
+- Receives tasks from manager
+
+Important Commands:
+-------------------
+
+Initialize swarm:
+docker swarm init
+
+Join worker:
+docker swarm join
+
+Deploy service:
+docker service create
+
+View nodes:
+docker node ls
+
+List services:
+docker service ls
+
+Scale service:
+docker service scale web=5
+
+Advantages:
+-----------
+- High availability
+- Load balancing
+- Auto healing
+- Auto scaling
+- Fault tolerance
+- Cluster management
+
+
+=====================================================
+
+DOCKER COMPOSE vs DOCKER SWARM
+==============================
+
+Docker Compose
+--------------
+• Runs on a single machine
+• Used for development/testing
+• Manages multiple containers
+• Uses docker-compose.yml
+• No auto scaling
+• No load balancing
+
+Docker Swarm
+------------
+• Runs on multiple machines
+• Used for production
+• Manages clusters
+• Supports auto scaling
+• Provides load balancing
+• High availability
+
+
+=====================================================
+
+
+SUMMARY
+=======
+
+Dockerfile
+→ Used to build Docker Images.
+
+Multi-stage Dockerfile
+→ Builds smaller, optimized production images.
+
+Docker Compose
+→ Manages multiple containers on a single host.
+
+Docker Swarm
+→ Manages containers across multiple servers (cluster) with scaling and high availability.
+
+
+
+=========================================
+DOCKER NETWORK - NOTES
+=========================================
+
+What is Docker Network?
+-----------------------
+Docker Network is a feature that allows Docker containers to communicate with each other, the Docker host, and external networks.
+
+It provides:
+- Container-to-container communication
+- Container-to-host communication
+- Internet access
+- Network isolation
+
+Without a network, containers cannot communicate with each other.
+
+Example:
+--------
+Container A (Web Server)
+        │
+        │
+Docker Network
+        │
+        │
+Container B (Database)
+
+The web server communicates with the database through the Docker network.
+
+=========================================
+
+Why Do We Need Docker Network?
+------------------------------
+
+- Communication between containers
+- Secure container isolation
+- Access to the internet
+- Connect containers to external services
+- Easy application deployment
+
+=========================================
+
+Types of Docker Networks
+========================
+
+1. Bridge Network (Default)
+---------------------------
+
+Definition:
+-----------
+Bridge is the default network created by Docker. It allows containers running on the same Docker host to communicate.
+
+Example:
+--------
+Container A
+      │
+      │
+  Bridge Network
+      │
+      │
+Container B
+
+Command:
+--------
+docker network ls
+
+Create bridge network:
+docker network create mybridge
+
+Run container:
+docker run --network mybridge nginx
+
+Use Case:
+---------
+- Single server
+- Development environment
+- Multiple containers on one machine
+
+Advantages:
+-----------
+- Default network
+- Easy to configure
+- Container isolation
+
+
+=========================================
+
+2. Host Network
+---------------
+
+Definition:
+-----------
+In Host network mode, the container shares the host machine's network.
+
+No separate container IP is assigned.
+
+Example:
+--------
+
+Host Machine
+    │
+    ├── Nginx Container
+    ├── Apache Container
+
+All use the host network.
+
+Command:
+--------
+docker run --network host nginx
+
+Advantages:
+-----------
+- Faster performance
+- No NAT
+- Less network overhead
+
+Disadvantages:
+--------------
+- Less isolation
+- Port conflicts may occur
+
+Use Case:
+---------
+High-performance applications.
+
+
+=========================================
+
+3. None Network
+---------------
+
+Definition:
+-----------
+The container has no network connectivity.
+
+No internet.
+No communication.
+
+Command:
+--------
+docker run --network none nginx
+
+Advantages:
+-----------
+- Maximum isolation
+- High security
+
+Use Case:
+---------
+Testing or highly secure environments.
+
+
+=========================================
+
+4. Overlay Network
+------------------
+
+Definition:
+-----------
+Overlay network connects containers running on different Docker hosts.
+
+Used with Docker Swarm.
+
+Example:
+--------
+
+Host 1
+  │
+Container A
+      │
+ Overlay Network
+      │
+Container B
+  │
+Host 2
+
+Command:
+--------
+docker network create -d overlay myoverlay
+
+Advantages:
+-----------
+- Multi-host communication
+- Cluster networking
+- Secure communication
+
+Use Case:
+---------
+Docker Swarm clusters.
+
+
+=========================================
+
+5. Macvlan Network
+------------------
+
+Definition:
+-----------
+Assigns a real MAC address and IP address to each container.
+
+Containers appear as physical devices on the network.
+
+Example:
+--------
+
+Router
+   │
+   ├── Container A
+   ├── Container B
+   ├── Laptop
+
+All have separate IP addresses.
+
+Command:
+--------
+docker network create -d macvlan ...
+
+Advantages:
+-----------
+- Direct network access
+- Better performance
+- Physical network visibility
+
+Use Case:
+---------
+Legacy applications and network appliances.
+
+
+=========================================
+
+Useful Docker Network Commands
+==============================
+
+List networks:
+docker network ls
+
+Inspect network:
+docker network inspect bridge
+
+Create network:
+docker network create mynetwork
+
+Create bridge network:
+docker network create -d bridge mynetwork
+
+Create overlay network:
+docker network create -d overlay myoverlay
+
+Connect container:
+docker network connect mynetwork container1
+
+Disconnect container:
+docker network disconnect mynetwork container1
+
+Remove network:
+docker network rm mynetwork
+
+=========================================
+
+Default Docker Networks
+=======================
+
+bridge
+-------
+Default network for standalone containers.
+
+host
+----
+Container shares host network.
+
+none
+----
+No network connectivity.
+
+=========================================
+
+Interview Questions
+===================
+
+Q1. What is Docker Network?
+
+Answer:
+Docker Network enables communication between Docker containers, the Docker host, and external networks.
+
+Q2. What is the default Docker network?
+
+Answer:
+Bridge Network.
+
+Q3. Which network is used in Docker Swarm?
+
+Answer:
+Overlay Network.
+
+Q4. Which network provides no connectivity?
+
+Answer:
+None Network.
+
+Q5. Which network shares the host machine's network?
+
+Answer:
+Host Network.
+
+Q6. Which network assigns a real MAC address to containers?
+
+Answer:
+Macvlan Network.
+
+=========================================
+
+Summary
+=======
+
+Bridge
+-------
+• Default network
+• Same Docker host
+• Most commonly used
+
+Host
+----
+• Shares host network
+• High performance
+• No isolation
+
+None
+----
+• No networking
+• Maximum security
+
+Overlay
+-------
+• Multi-host communication
+• Used with Docker Swarm
+
+Macvlan
+--------
+• Real MAC & IP address
+• Appears as a physical device
+• Used for legacy applications
+
+```
+
+
+
+
+
+
+
+
+
+
+
+

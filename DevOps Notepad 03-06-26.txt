@@ -1,0 +1,2317 @@
+
+NETWORKING BASICS FOR DEVOPS 
+
+1. Introduction to Networking
+Networking is the process of connecting computers, servers, devices, and systems together to share data and resources.
+
+Examples:
+- Accessing websites
+- Connecting cloud servers
+- SSH remote access
+- Kubernetes communication
+
+--------------------------------------------------
+
+2. Types of Networks
+
+LAN (Local Area Network)
+- Covers small area
+- High speed
+- Example: Office WiFi
+
+WAN (Wide Area Network)
+- Covers large areas
+- Internet is the biggest WAN
+
+MAN (Metropolitan Area Network)
+- Covers city-level networks
+
+
+
+
+
+What is Network Topology?
+
+Network topology is the physical or logical arrangement of computers, switches, routers, and cables in a network.
+
+It defines:
+
+How devices are connected
+How data flows
+Network performance and reliability
+
+1. Bus Topology
+2. Star Topology 
+3. Mesh Topology
+4. Ring Topology
+5. Hybrid Topology
+--------------------------------------------------
+
+3. OSI Model
+
+Layer 7 - Application
+Layer 6 - Presentation
+Layer 5 - Session
+Layer 4 - Transport
+Layer 3 - Network
+Layer 2 - Data Link
+Layer 1 - Physical
+
+Important:
+- HTTP works in Application Layer
+- TCP works in Transport Layer
+- IP works in Network Layer
+
+
+=========================================================
+
+What are Network Devices?
+
+Network devices are hardware components used to connect, manage, and communicate between computers and networks.
+
+Purpose:
+- Data communication
+- Network management
+- Internet connectivity
+- Security
+
+Examples
+-----------
+
+1. Hub
+- Connects multiple devices
+- Sends data to all devices
+
+2. Switch
+- Connects devices in LAN
+- Uses MAC address
+- Sends data to correct device
+
+3. Router
+- Connects different networks
+- Provides internet access
+- Uses IP address
+
+4. Modem
+- Connects network to ISP
+- Converts signals
+
+5. Access Point (AP)
+- Provides WiFi connectivity
+
+6. Firewall
+- Secures network
+- Blocks unauthorized access
+
+7. Load Balancer
+- Distributes traffic across servers
+
+8. Repeater
+- Boosts weak network signals
+
+9. NIC (Network Interface Card)
+- Connects computer to network
+--------------------------------------------------
+
+TCP vs UDP – Difference
+
+--------------------------------------------------
+
+1. Definition
+
+TCP (Transmission Control Protocol)
+- Connection-oriented protocol
+- Reliable communication
+
+UDP (User Datagram Protocol)
+- Connectionless protocol
+- Faster communication
+
+--------------------------------------------------
+
+2. Major Differences
+
+Feature              		  TCP                         UDP
+--------------------------------------------------------------
+Connection    		Connection-oriented         Connectionless
+Reliability            	Reliable                    	Unreliable
+Data Delivery         	Guaranteed                  	Not guaranteed
+Speed                  	Slower                      	Faster
+Error Checking       	Yes                         		Basic
+Packet Order          	Maintained                  	Not maintained
+Acknowledgement   	Required                    	Not required
+Retransmission       	Yes                         		No
+Overhead              	High                        		Low
+
+--------------------------------------------------
+
+3. TCP Features
+
+- Establishes connection before communication
+- Uses 3-way handshake
+- Ensures data delivery
+- Resends lost packets
+- Reliable communication
+
+Examples:
+- HTTP
+- HTTPS
+- SSH
+- FTP
+- Email
+- Database connections
+
+--------------------------------------------------
+
+4. UDP Features
+
+- No connection setup
+- Faster communication
+- No retransmission
+- Suitable for real-time applications
+
+Examples:
+- Video streaming
+- Online gaming
+- DNS queries
+- Live streaming
+
+===============================================
+
+PROTOCOLS AND PORT NUMBERS 
+
+--------------------------------------------------
+
+1. What is a Protocol?
+
+A protocol is a set of rules used for communication between devices over a network.
+
+Examples:
+- HTTP
+- HTTPS
+- FTP
+- SSH
+- DNS
+
+--------------------------------------------------
+
+2. What is a Port Number?
+
+A port number identifies a specific service or application running on a server.
+
+Example:
+- Website -> Port 80
+- Secure Website -> Port 443
+
+Range:
+0 - 65535
+
+--------------------------------------------------
+
+3. Types of Ports
+
+Well-Known Ports:
+0 - 1023
+
+Registered Ports:
+1024 - 49151
+
+Dynamic/Private Ports:
+49152 - 65535
+
+--------------------------------------------------
+
+4. Important Protocols and Port Numbers
+
+HTTP (HyperText Transfer Protocol)
+Port: 80
+Usage:
+- Access websites
+
+--------------------------------------------------
+
+HTTPS (Secure HTTP)
+Port: 443
+Usage:
+- Secure website communication
+
+--------------------------------------------------
+
+SSH (Secure Shell)
+Port: 22
+Usage:
+- Remote Linux server access
+
+Command:
+ssh ubuntu@server-ip
+
+--------------------------------------------------
+
+FTP (File Transfer Protocol)
+Port: 21
+Usage:
+- File transfer
+
+--------------------------------------------------
+
+SFTP (Secure File Transfer Protocol)
+Port: 22
+Usage:
+- Secure file transfer using SSH
+
+--------------------------------------------------
+
+DNS (Domain Name System)
+Port: 53
+Usage:
+- Converts domain names into IP addresses
+
+--------------------------------------------------
+
+DHCP (Dynamic Host Configuration Protocol)
+Ports:
+67, 68
+Usage:
+- Assigns IP addresses automatically
+
+--------------------------------------------------
+
+SMTP (Simple Mail Transfer Protocol)
+Port: 25
+Usage:
+- Sending emails
+
+--------------------------------------------------
+
+POP3 (Post Office Protocol v3)
+Port: 110
+Usage:
+- Receiving emails
+
+--------------------------------------------------
+
+IMAP (Internet Message Access Protocol)
+Port: 143
+Usage:
+- Accessing emails from mail server
+
+--------------------------------------------------
+
+
+
+IP Addressing
+==========
+1. What is an IP Address?
+
+IP Address (Internet Protocol Address) is a unique address assigned to a device in a network.
+
+Purpose:
+- Identifies devices
+- Helps communication between systems
+
+Example:
+192.168.1.10
+
+Classes of IP Address
+--------------------------
+0.0.0.0
+0.0.0.1
+0.0.0.2
+.
+.
+.
+0.0.0.255
+0.0.1.0
+0.0.1.255
+
+12.0.0.0
+
+Class A 	1.0.0.0	 to 126.255.255.255   /8	N.H.H.H
+1 - 126
+	
+Large organizations
+			
+Class B	128.0.0.0 to 191.255.255.255	/16		N.N.H.H	
+128 - 191
+Medium sized organizations
+	
+Class C	192.0.0.0 to 223.255.255.255	/24      N.N.N.H
+192 - 223 
+Small organizations
+Class D 	224.0.0.0 to 239.255.255.255		Multicasting
+224 - 239
+Class E	240.0.0.0 to 255.255.255.255		Research and experimental purposes
+240 - 255
+127.0.0.1 - Loopback Address
+--------------------------------------------------
+
+2. Types of IP Address
+
+A. Public IP Address
+- Accessible through internet
+- Assigned by ISP
+- Unique globally
+
+Example:
+49.205.x.x
+
+Usage:
+- Websites
+- Cloud servers
+- Internet communication
+
+--------------------------------------------------
+
+B. Private IP Address
+- Used inside local/internal networks
+- Not directly accessible from internet
+
+Private IP Ranges:
+10.0.0.0     - 10.255.255.255 1 - 126
+172.16.0.0  - 172.31.255.255		128 - 191
+192.168.0.0 - 192.168.255.255   192 - 223
+
+Usage:
+- Home WiFi
+- Office networks
+- Internal cloud networks
+
+--------------------------------------------------
+
+3. Static vs Dynamic IP
+
+Static IP:
+- Fixed IP address
+- Manually configured
+- Mostly used for servers
+
+Dynamic IP:
+- Automatically assigned using DHCP
+- Changes periodically
+
+--------------------------------------------------
+
+4. IPv4 and IPv6
+
+A. IPv4
+- 32-bit address
+- Most commonly used
+
+Example:
+192.168.1.1
+00000000.00000000.00000000.00000000
+
+Format:
+4 octets separated by dots
+
+--------------------------------------------------
+
+B. IPv6
+- 128-bit address
+- Developed to solve IPv4 shortage
+
+Example:
+2001:0db8:85a3::8a2e:0370:7334
+
+Advantages:
+- Large address space
+- Better security
+- Improved routing
+
+===================================
+
+Network
+-----------
+192.168.0.0/24  
+no of ip 256
+
+192.168.0.0  		- Network address
+192.168.0.1		- 1st valid ip
+192.168.0.2
+.
+.
+192.168.0.254		- Last valid ip	
+192.168.0.255		- Broadcast address
+
+
+254 c
+500 b - 65536
+
+CIDR - Classless Inter Domain Routing
+/24
+/25
+
+10.0.0.0/24
+10.0.0.0 
+10.0.0.1
+10.0.0.254
+10.0.0.255
+
+
+SUBNETTING & CIDR 
+
+--------------------------------------------------
+
+1. What is Subnetting?
+
+Subnetting is the process of dividing a large network into smaller networks called subnets.
+
+Purpose:
+- Better network management
+- Improved security
+- Efficient IP usage
+- Reduced network traffic
+
+--------------------------------------------------
+
+2. Why Subnetting is Important?
+
+Advantages:
+- Improves performance
+- Reduces broadcast traffic
+- Better security
+- Efficient IP allocation
+- Easier troubleshooting
+
+Used in:
+- AWS VPC
+- Kubernetes
+- Enterprise Networks
+- Cloud Infrastructure
+
+--------------------------------------------------
+
+3. What is a Subnet?
+
+A subnet is a smaller network created from a larger network.
+
+Example:
+Network:
+192.168.1.0/24
+
+Can be divided into:
+192.168.1.0/25
+192.168.1.128/25
+
+--------------------------------------------------
+
+4. What is CIDR?
+
+CIDR = Classless Inter-Domain Routing
+
+CIDR notation represents:
+IP Address + Network Bits
+
+Example:
+192.168.1.0/24
+
+Meaning:
+- 24 bits are network bits
+- Remaining 8 bits are host bits
+
+--------------------------------------------------
+
+5. CIDR Format
+
+Format:
+IP_Address/Network_Bits
+
+Example:
+10.0.0.0/16
+
+--------------------------------------------------
+
+6. Understanding Network Bits
+
+IPv4 Address:
+32 bits total
+
+Example:
+/24
+
+Means:
+24 bits -> Network
+8 bits -> Hosts
+
+--------------------------------------------------
+
+7. Common CIDR Values
+
+CIDR              Number of Hosts	Number of IP
+------------------------------------------------------------------------
+/8                 	16 Million			16 Million
+/16               	65,534			65,536
+/24              	254				256
+/25           	126				128
+/26            	62				64
+/27           	30				32
+/28            	14				16
+/29            	6				8
+/30            	2				4
+
+Networking commands
+---------------------------
+	ping
+Windows
+	ipconfig
+	ipconfig/all
+	getmac
+Linux
+	ifconfig
+
+==========================================================================================================================================
+
+
+
+LINUX BASICS 
+
+--------------------------------------------------
+
+1. SERVER VS CLIENT
+
+Client:
+A client is a system or device that requests services from another system.
+
+Examples:
+- Web browser
+- Mobile app
+- Laptop
+
+Example:
+When you open google.com in Chrome browser, your browser acts as a client.
+
+--------------------------------------------------
+
+Server:
+A server is a system that provides services, data, or resources to clients.
+
+Examples:
+- Web server
+- Database server
+- AWS EC2 server
+
+Example:
+Google server sends webpage data to your browser.
+
+--------------------------------------------------
+
+Client-Server Communication
+
+Client sends request
+↓
+Server processes request
+↓
+Server sends response
+
+Example:
+Browser → Web Server → Website Display
+
+--------------------------------------------------
+
+2. WHAT IS SERVER OS?
+
+Server Operating System is specially designed to manage servers and network services.
+
+Features:
+- Handles multiple users
+- Runs continuously
+- Provides security
+- Supports networking
+- Optimized for performance
+
+Examples:
+- Ubuntu Server
+- Red Hat Enterprise Linux
+- Windows Server
+- Amazon Linux
+
+--------------------------------------------------
+
+3. WHAT IS LINUX?
+
+Linux is an open-source operating system based on Unix.
+
+Created By:
+Linus Torvalds (1991)
+
+Linux is mainly used for:
+- Servers
+- Cloud Computing
+- DevOps
+- Docker
+- Kubernetes
+- Networking
+
+--------------------------------------------------
+
+4. FEATURES OF LINUX
+
+- Open Source
+- Free to use
+- Secure
+- Stable
+- Multi-user
+- Multi-tasking
+- High performance
+
+--------------------------------------------------
+
+5. ADVANTAGES OF LINUX
+
+A. Security
+Linux is less vulnerable to viruses and malware.
+
+B. Stability
+Servers can run for long periods without crashing.
+
+C. Performance
+Uses system resources efficiently.
+
+D. Open Source
+Source code is freely available.
+
+E. Automation Friendly
+Supports shell scripting and DevOps tools.
+
+--------------------------------------------------
+
+6. LINUX DISTRIBUTIONS (DISTROS)
+
+Linux Distribution = Linux Kernel + Software Packages
+
+Popular Linux Distros:
+
+Ubuntu
+- Beginner friendly
+- Most common in cloud
+
+Red Hat (RHEL)
+- Enterprise Linux
+- Paid support
+
+CentOS
+- Stable server OS
+
+Debian
+- Highly stable
+
+Amazon Linux
+- Optimized for AWS
+
+Kali Linux
+- Security testing
+
+--------------------------------------------------
+
+7. LINUX ARCHITECTURE
+
+Linux architecture explains how Linux works internally.
+
+--------------------------------------------------
+
+A. Hardware
+
+Physical components:
+- CPU
+- RAM
+- Hard Disk
+- Network Card
+
+--------------------------------------------------
+
+B. Kernel
+
+Kernel is the heart of Linux.
+
+Responsibilities:
+- Process management
+- Memory management
+- File management
+- Device management
+
+--------------------------------------------------
+
+C. Shell
+
+Shell acts as interface between user and kernel.
+
+User gives commands through shell.
+
+Examples:
+- Bash
+- Zsh
+
+Example:
+ls
+pwd
+mkdir
+
+--------------------------------------------------
+
+D. System Utilities
+
+Utilities are Linux commands and tools.
+
+Examples:
+- cp
+- mv
+- rm
+- ps
+
+--------------------------------------------------
+
+E. User Applications
+
+Applications installed on Linux.
+
+Examples:
+- Docker
+- Jenkins
+- Nginx
+- Kubernetes
+
+--------------------------------------------------
+
+Linux Architecture Flow
+
+User
+ ↓
+Shell
+ ↓
+Kernel
+ ↓
+Hardware
+
+--------------------------------------------------
+
+8. LINUX FILE SYSTEM
+
+Linux stores everything as files.
+
+Root Directory:
+/
+
+All directories start from root.
+
+--------------------------------------------------
+
+IMPORTANT DIRECTORIES
+
+/            Root directory
+
+/home        User home directories
+
+/etc         Configuration files
+
+/var         Variable data and logs
+
+/var/log     System logs
+
+/bin         Basic Linux commands
+
+/sbin        System administration commands
+
+/tmp         Temporary files
+
+/boot        Boot loader files
+
+/dev         Device files
+
+/proc        Process information
+
+/usr         Applications and software
+
+/mnt	for mounting hard disk temporally 
+
+/media	for mounting dvd
+
+--------------------------------------------------
+
+9. FILE SYSTEM FEATURES
+
+- Hierarchical structure
+- Secure permissions
+- Multi-user support
+- Organized storage
+
+--------------------------------------------------
+
+10. WHY LINUX FOR DEVOPS?
+
+Linux is widely used in DevOps because:
+
+- Most cloud servers run Linux
+- Docker works best on Linux
+- Kubernetes nodes use Linux
+- Easy automation using shell scripting
+- Lightweight and stable
+
+--------------------------------------------------
+
+11. REAL-TIME EXAMPLES
+
+AWS EC2:
+Linux servers are mostly used.
+
+Docker:
+Containers run mainly on Linux kernel.
+
+Kubernetes:
+Worker nodes usually use Linux.
+
+
+
+BASIC LINUX COMMANDS 
+
+--------------------------------------------------
+
+mathu@webserver:~$
+username@hostname:location $
+root@hostname:~#
+
+~	- 	Home directory of the current user 
+		ex : /home/Naveen , /home/mathu , /root
+$	-  	Current user is guest user
+#	- 	Current user is root user
+
+
+
+whoami 		- print current user
+hostname		- print server name
+
+
+Command Syntax:
+---------------------
+
+	command 	{options}		{args}
+	ls  -l
+	ls  -a
+	ls  /bin
+
+
+helping commands:
+
+ 	man  command
+	command --help
+
+1. pwd
+Purpose:
+Shows current directory path.
+
+Example:
+pwd
+
+--------------------------------------------------
+
+2. ls
+Purpose:
+Lists files and directories.
+
+Examples:
+ls
+ls -l
+ls -a
+
+--------------------------------------------------
+
+3. cd
+Purpose:
+Changes directory.
+
+Examples:
+cd /home
+cd ..
+cd ~
+
+Absolute path		- 	Full path of the file , always stats with /
+			eg : /home/naveen/devops/Linux
+Relative path		- 	file path referred based on the current location
+			eg : current location  /home/Naveen
+				cd devops/linux
+
+
+--------------------------------------------------
+
+4. mkdir
+Purpose:
+Creates directory.
+
+Example:
+mkdir devops
+
+tree 
+print the structure of directory
+
+devops/
+├── linux
+│   └── ubunut
+│       └── os
+└── network
+--------------------------------------------------
+
+5. rmdir
+Purpose:
+Removes empty directory.
+
+Example:
+rmdir test
+
+--------------------------------------------------
+
+6. touch
+Purpose:
+Creates empty file.
+
+Example:
+touch file.txt
+
+--------------------------------------------------
+
+7. cat
+Purpose:
+Displays file contents.
+
+Example:
+cat file.txt
+
+--------------------------------------------------
+
+8. echo
+Purpose:
+Prints text/output.
+
+Example:
+echo "Hello Linux"
+
+--------------------------------------------------
+
+9. cp
+Purpose:
+Copies files/directories.
+
+Example:
+cp file1.txt file2.txt
+
+--------------------------------------------------
+
+10. mv
+Purpose:
+Moves or renames files.
+
+Example:
+mv file1.txt newfile.txt
+
+--------------------------------------------------
+
+11. rm
+Purpose:
+Deletes files/directories.
+
+Examples:
+rm file.txt
+rm -r folder
+
+--------------------------------------------------
+
+12. clear
+Purpose:
+Clears terminal screen.
+
+Example:
+clear
+
+--------------------------------------------------
+
+13. history
+Purpose:
+Shows command history.
+
+Example:
+history
+
+--------------------------------------------------
+
+14. whoami
+Purpose:
+Displays current user.
+
+Example:
+whoami
+
+--------------------------------------------------
+
+15. uname
+Purpose:
+Shows system information.
+
+Example:
+uname -a
+
+--------------------------------------------------
+
+16. date
+Purpose:
+Displays current date/time.
+
+Example:
+date
+
+--------------------------------------------------
+
+17. cal
+Purpose:
+Shows calendar.
+
+Example:
+cal
+
+
+Text Processing Commands
+----------------------------------
+
+vim
+	vim filename
+		i - insert
+		press esc to exit insert mode
+		:wq  write and quit
+		:wq!	force write and quit
+
+nano 
+	nano filename
+		ctrl o  to write
+		ctrl x  to exit
+		ctrl w  to search word
+
+cat 	- to view the text file
+	cat filename
+
+head 	- to view first 10 lines
+	head filename
+	head -15 filename
+
+tail 	- to view last 10 lines
+	tail filename
+	tail -15 filename
+
+more - to view the file page by page
+	more filename
+
+
+System specification commands
+----------------------------------------
+lscpu 	- cpu info
+free -h	- ram info
+uname -a 	- print kernel & arch
+uname -r 		- print kernel
+cat /etc/os-release 	- os details
+
+
+
+Data stream & Redirections
+====================
+
+command   -->  {output} or {error} or {output & error}
+
+	<	- input to command
+	> 	- Redirect output to overwrite a file
+	>> 	- Redirect output to append a file
+	2>	- Redirect error to overwrite a file
+	2>>	- Redirect error to append a file
+	|	- chain multiple commands
+
+ #find {location} {option}
+  525  find . -name d1
+  526  find / -name d1
+  527  find /home -name d1
+  528  find /home -name d1 > out
+  529  find /home -name d1 2> err
+
+
+===================================================================
+
+USER, GROUP, PASSWORD MANAGEMENT & SUDO 
+
+--------------------------------------------------
+
+1. What is a User?
+
+A user is an account used to access Linux system.
+
+Types:
+- Root User  (UID = 0)
+- Normal User ( UID = 1000 to 60000)
+- Service/System User ( UID = 1 to 999)
+
+UID - User Identification Number 
+--------------------------------------------------
+
+2. Root User
+
+Root user is the administrator of Linux.
+
+Features:
+- Full access
+- Can modify system files
+- Can manage users/services
+
+Username:
+root
+
+--------------------------------------------------
+
+3. Normal User
+
+Regular users with limited permissions.
+
+Example:
+naveen
+
+--------------------------------------------------
+Creating a user
+	useradd  username
+		eg: useradd mathu
+Modify the user
+	usermod 
+		eg: usermod -u 8000 username
+		eg: usermod -s /bin/bash username
+Deleting the user 
+	userdel
+		eg: userdel username   -to delete only the user account
+		eg: userdel -r username 	- to delete user account along with home directory
+
+How to switch user account?
+ 	su - username 
+
+how to set password
+ 	passwd username
+
+/etc/paaswd 
+root:x:0:0:root:/root:/bin/bash
+ ram:x:1015:1015::/home/ram:/bin/sh
+user: password : UID : GID : Comment : Home directory :Shell
+
+
+
+
+
+
+4. What is a Group?
+
+A group is a collection of users with shared permission.
+
+Purpose:
+- Simplifies permission management
+- Multiple users can share access
+
+Examples:
+developers
+admins
+
+Primary Group - Creates along with user 
+Secondary Group 
+
+-----------------
+Creating Group
+	groupadd grpname
+Modifying Group
+	groupmod
+Deleting Group
+	groupdel 
+Add or Remove users form Group
+	gpasswd -a  user  grp		- add
+	gpasswd -d  user  grp		- remove
+
+
+
+
+--------------------------------------------------
+
+5. Important Files
+
+/etc/passwd
+- User information
+
+/etc/shadow
+- Encrypted passwords
+
+/etc/group
+- Group information
+
+--------------------------------------------------
+Password Policy
+-------------------
+passwd username
+
+Min - Min no days between password changes 
+Max	- Max no days a password may used 35
+War - Gives warning message before password expires 
+
+How to check password policy ?
+	chage -l user
+	
+How to change password policy?
+	chage user
+
+
+
+--------------------------------------------------
+
+19. What is sudo?
+
+sudo =
+Super User Do
+
+Purpose:
+Allows normal user to run admin commands temporarily.
+
+--------------------------------------------------
+
+20. Why sudo is Important?
+
+- Improves security
+- Avoids direct root login
+- Tracks admin activity
+
+--------------------------------------------------
+
+24. Difference Between su and sudo
+
+su
+- Switches completely to another user
+- Requires target user password
+
+sudo
+- Runs single command as admin
+- Requires current user password
+
+
+Configuration file
+
+	/etc/sudoers
+	visudo 		- use this command to edit the file
+	
+How to provide access to user?
+	username   ALL=(ALL:ALL)   ALL
+	demo1   ALL=(ALL:ALL)       /sbin/useradd, /sbin/userdel, /sbin/usermod
+
+How to provide access to group?
+	%grp   ALL=(ALL)   ALL
+	%grp   ALL=(ALL)       /sbin/useradd, /sbin/userdel, /sbin/usermod
+
+How to provide admin command access without password?
+	user   ALL=(ALL)  NOPASSWD:  ALL, !/sbin/shutdown, !/sbin/groupdel
+
+
+How to list the sudo privilege of user?
+	sudo -l
+
+
+
+FILE PERMISSIONS IN LINUX – DEVOPS NOTES
+
+--------------------------------------------------
+
+1. What are File Permissions?
+
+File permissions control:
+- Who can access files
+- Who can modify files
+- Who can execute files
+
+Linux security is mainly based on permissions.
+ls -l
+
+drwxr-xr-x 2 naveen naveen 4096 May 18 06:22 Documents
+-rwxr-xr-x 1 naveen naveen  406 May 18 06:22 backup.sh
+drwxrwxr-x 2 naveen naveen 4096 May 19 06:40 backups
+-rw-r--r-- 1 naveen naveen   32 May 18 12:03 out
+drwx------ 3 naveen naveen 4096 May 19 04:38 snap
+
+d - File type Directory 
+-  - File type is file
+l  - link 
+rwx rwx rwx
+
+--------------------------------------------------
+
+2. Permission Types
+
+Permission      Symbol      Value
+-----------------------------------
+Read            r           4
+Write           w           2
+Execute         x           1
+
+--------------------------------------------------
+
+3. Meaning of Permissions
+
+Read (r)
+- View file contents
+
+Write (w)
+- Modify or delete file
+
+Execute (x)
+- Run file/program
+
+--------------------------------------------------
+
+4. Permission Categories
+
+Linux permissions are assigned to:
+
+u -> User (Owner)
+g -> Group
+o -> Others
+
+--------------------------------------------------
+
+5. View File Permissions
+
+Command:
+ls -l
+
+Example Output:
+-rwxr-xr--
+
+--------------------------------------------------
+
+6. Understanding Permission Format
+
+Example:
+-rwxr-xr--
+
+Breakdown:
+
+-           -> File type
+rwx         -> Owner permissions
+r-x         -> Group permissions
+r--         -> Others permissions
+
+--------------------------------------------------
+
+7. File Types
+
+-  -> Regular file
+d  -> Directory
+l  -> Symbolic link
+
+--------------------------------------------------
+
+8. Numeric Permission Values
+
+Permission      Value
+----------------------
+rwx             7
+rw-             6
+r-x             5
+r--             4
+rwx rw- r-x  765
+Formula:
+Read  = 4
+Write = 2
+Execute = 1
+
+--------------------------------------------------
+
+9. Common Permission Examples
+
+777
+rwxrwxrwx
+- Full access to everyone
+
+755
+rwxr-xr-x
+- Owner full access
+- Others read & execute
+
+644
+rw-r--r--
+- Owner read/write
+- Others read only
+
+700
+rwx------
+- Only owner access
+
+--------------------------------------------------
+
+10. chmod Command
+
+Purpose:
+Changes file permissions.
+
+Syntax:
+chmod permissions filename
+
+--------------------------------------------------
+
+11. chmod Examples
+
+Give full permission:
+chmod 777 file.txt
+
+Read/write for owner only:
+chmod 600 file.txt
+
+Executable file:
+chmod +x script.sh
+
+--------------------------------------------------
+
+12. Symbolic Mode
+
+Add permission:
+chmod u+x file.sh
+
+Remove permission:
+chmod g-w file.txt
+
+--------------------------------------------------
+
+13. chown Command
+
+Purpose:
+Changes file owner.
+
+Syntax:
+chown user filename
+
+Example:
+sudo chown naveen file.txt
+
+--------------------------------------------------
+
+14. Change Group Ownership
+
+Command:
+chgrp group filename
+
+Example:
+sudo chgrp devops file.txt
+
+--------------------------------------------------
+
+15. Directory Permissions
+
+Read:
+View files inside directory
+
+Write:
+Create/delete files
+
+Execute:
+Enter directory
+
+
+
+--------------------------------------------------
+Check File Ownership
+
+Command:
+ls -l
+
+
+
+
+==================================================
+1. PACKAGE MANAGEMENT
+==================================================
+
+What is Package Management?
+
+Package management is the process of:
+- Installing software
+- Updating software
+- Removing software
+- Managing dependencies
+
+Examples:
+- Docker
+- Jenkins
+- Nginx
+- Git
+
+--------------------------------------------------
+
+2. PACKAGE MANAGERS
+
+Ubuntu/Debian:
+apt
+
+RHEL/CentOS:
+yum
+dnf
+
+--------------------------------------------------
+
+3. apt COMMANDS (Ubuntu)
+
+Update Package List:
+sudo apt update
+
+Upgrade Packages:
+sudo apt upgrade
+
+Install Package:
+sudo apt install nginx
+
+Remove Package:
+sudo apt remove nginx
+
+Search Package:
+apt search nginx
+
+Package Information:
+apt show nginx
+
+--------------------------------------------------
+
+4. yum COMMANDS (CentOS/RHEL)
+
+Install Package:
+sudo yum install nginx
+
+Update Packages:
+sudo yum update
+
+Remove Package:
+sudo yum remove nginx
+
+Search Package:
+yum search nginx
+
+--------------------------------------------------
+
+5. dnf COMMANDS
+
+Install Package:
+sudo dnf install nginx
+
+Update System:
+sudo dnf update
+
+
+--------------------------------------------------
+
+8. PACKAGE REPOSITORIES
+
+Repository =
+Location where packages are stored.
+
+Examples:
+- Ubuntu Repository
+- Docker Repository
+
+--------------------------------------------------
+
+9. CHECK INSTALLED PACKAGES
+
+Ubuntu:
+dpkg -l
+
+CentOS:
+rpm -qa
+
+--------------------------------------------------
+
+10. REMOVE UNUSED PACKAGES
+
+Ubuntu:
+sudo apt autoremove
+
+--------------------------------------------------
+
+==================================================
+11. SERVICE MANAGEMENT
+==================================================
+
+What is a Service?
+
+A service is a background process running continuously in Linux.
+
+Examples:
+- nginx
+- docker
+- ssh
+- jenkins
+
+--------------------------------------------------
+
+12. SYSTEMCTL COMMAND
+
+systemctl is used to manage services.
+
+--------------------------------------------------
+
+13. START SERVICE
+
+Command:
+sudo systemctl start nginx
+
+Purpose:
+Starts service.
+
+--------------------------------------------------
+
+14. STOP SERVICE
+
+Command:
+sudo systemctl stop nginx
+
+Purpose:
+Stops service.
+
+--------------------------------------------------
+
+15. RESTART SERVICE
+
+Command:
+sudo systemctl restart nginx
+
+Purpose:
+Restarts service.
+
+--------------------------------------------------
+
+16. CHECK SERVICE STATUS
+
+Command:
+sudo systemctl status nginx
+
+Purpose:
+Checks service status.
+
+--------------------------------------------------
+
+17. ENABLE SERVICE
+
+Command:
+sudo systemctl enable nginx
+
+Purpose:
+Starts service automatically during boot.
+
+--------------------------------------------------
+
+18. DISABLE SERVICE
+
+Command:
+sudo systemctl disable nginx
+
+Purpose:
+Disables auto-start during boot.
+
+--------------------------------------------------
+
+19. RELOAD SERVICE
+
+Command:
+sudo systemctl reload nginx
+
+Purpose:
+Reloads configuration without restart.
+
+--------------------------------------------------
+
+23. SERVICE MANAGEMENT FLOW
+
+Install Package
+↓
+Start Service
+↓
+Enable Service
+↓
+Check Status
+
+--------------------------------------------------
+
+24. IMPORTANT SERVICES FOR DEVOPS
+
+ssh       -> Remote access
+docker    -> Container service
+jenkins   -> CI/CD server
+nginx     -> Web server
+kubelet   -> Kubernetes node service
+
+--------------------------------------------------
+
+
+
+PROCESS MANAGEMENT 
+
+==================================================
+1. What is a Process?
+==================================================
+
+A process is a running instance of a program.
+
+Example:
+- Running Chrome browser
+- Running nginx service
+- Running Docker
+
+--------------------------------------------------
+
+2. Process States
+
+Running - R
+- Process is executing
+
+Sleeping	- S/D/I/K
+- Waiting for resource/input
+
+Stopped	- T
+- Process paused
+
+Zombie	- Z
+- Process completed but entry still exists
+
+--------------------------------------------------
+
+3. Process ID (PID)
+
+Every process has a unique ID called PID.
+
+Example:
+1234
+
+--------------------------------------------------
+
+4. Parent & Child Process
+
+Parent Process:
+Starts another process.
+
+Child Process:
+Created by parent process.
+
+--------------------------------------------------
+
+5. Foreground Process
+
+Runs directly in terminal.
+
+Example:
+ping google.com
+
+--------------------------------------------------
+
+6. Background Process
+
+Runs in background without blocking terminal.
+
+Example:
+ping google.com &
+
+--------------------------------------------------
+
+7. View Running Processes
+
+Command:
+ps
+
+--------------------------------------------------
+
+8. Detailed Process List
+
+Command:
+ps -ef
+
+OR
+
+ps aux
+
+--------------------------------------------------
+
+9. Real-Time Process Monitoring
+
+Command:
+top
+
+Purpose:
+Shows live running processes.
+
+--------------------------------------------------
+
+10. Better Monitoring Tool
+
+Command:
+htop
+
+Features:
+- Interactive
+- Easy monitoring
+
+Install:
+sudo apt install htop
+
+--------------------------------------------------
+
+11. Kill Process
+
+Command:
+kill PID
+
+Example:
+kill 1234
+
+--------------------------------------------------
+
+12. Force Kill Process
+
+Command:
+kill -9 PID
+
+Example:
+kill -9 1234
+
+--------------------------------------------------
+
+13. Kill Process by Name
+
+Command:
+pkill process-name
+
+Example:
+pkill nginx
+
+--------------------------------------------------
+
+14. Background Jobs
+
+Run in background:
+command &
+
+Example:
+sleep 100 &
+
+--------------------------------------------------
+
+15. View Background Jobs
+
+Command:
+jobs
+
+--------------------------------------------------
+
+16. Bring Background Job to Foreground
+
+Command:
+fg
+
+--------------------------------------------------
+
+17. Send Foreground Process to Background
+
+Press:
+CTRL + Z
+
+Then:
+bg
+
+
+--------------------------------------------------
+
+19. Check Specific Process
+
+Command:
+pidof nginx
+
+OR
+
+pgrep nginx
+
+--------------------------------------------------
+23. Service Processes
+
+Background services are called daemons.
+
+Examples:
+- sshd
+- nginx
+- dockerd
+
+
+
+--------------------------------------------------
+
+25. Check CPU Usage
+
+Command:
+top
+
+OR
+
+htop
+
+--------------------------------------------------
+
+26. Check Memory Usage
+
+Command:
+free -m
+
+--------------------------------------------------
+
+27. Process Management in DevOps
+
+Used for:
+- Monitoring applications
+- Managing Docker containers
+- Jenkins troubleshooting
+- Kubernetes node monitoring
+
+--------------------------------------------------
+
+28. Important Process Commands
+
+ps          -> View processes
+top         -> Monitor processes
+htop        -> Interactive monitoring
+kill        -> Stop process
+pkill       -> Kill by name
+jobs        -> Background jobs
+bg          -> Run in background
+fg          -> Bring to foreground
+
+
+
+
+BASH SCRIPTING 
+
+
+==================================================
+1. WHAT IS BASH SCRIPTING?
+==================================================
+
+Bash scripting is writing a series of Linux commands in a file to automate tasks.
+
+Bash =
+Bourne Again Shell
+
+Script =
+Collection of commands stored in a file.
+
+--------------------------------------------------
+
+2. WHY BASH SCRIPTING?
+
+Used to:
+- Automate tasks
+- Reduce manual work
+- Save time
+- Manage servers
+- Deploy applications
+
+--------------------------------------------------
+
+3. ADVANTAGES OF BASH SCRIPTING
+
+- Easy to learn
+- Automates repetitive tasks
+- Faster administration
+- Useful for DevOps
+- Works in Linux servers
+- Reduces human errors
+
+--------------------------------------------------
+
+4. SIMPLE BASH SCRIPT
+
+Create file:
+nano hello.sh
+
+Script:
+--------------------------------------------------
+#!/bin/bash
+
+echo "Hello World"
+--------------------------------------------------
+
+Save and exit.
+
+Give execute permission:
+chmod +x hello.sh
+
+Run script:
+./hello.sh
+
+Output:
+Hello World
+
+--------------------------------------------------
+
+5. WHAT IS SHEBANG LINE?
+
+Example:
+#!/bin/bash
+
+Meaning:
+- First line in script
+- Tells Linux which interpreter to use
+
+Common Shebangs:
+#!/bin/bash
+#!/bin/sh
+#!/usr/bin/python3
+
+--------------------------------------------------
+
+6. COMMENTS IN BASH
+
+Single line comment:
+# This is comment
+
+--------------------------------------------------
+
+7. VARIABLES IN BASH
+
+Variables store values.
+
+Syntax:
+variable=value
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+name="Naveen"
+
+echo $name
+--------------------------------------------------
+
+Output:
+Naveen
+
+--------------------------------------------------
+
+8. USER INPUT
+
+Command:
+read
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+echo "Enter your name:"
+read name
+
+echo "Welcome $name"
+--------------------------------------------------
+
+--------------------------------------------------
+
+9. SYSTEM VARIABLES
+
+Examples:
+$USER
+$HOME
+$PWD
+
+Example:
+echo $HOME
+
+--------------------------------------------------
+
+10. COMMAND LINE ARGUMENTS
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+echo $1
+echo $2
+--------------------------------------------------
+
+Run:
+./test.sh hello world
+
+Output:
+hello
+world
+
+--------------------------------------------------
+
+11. CONDITIONS IN BASH
+
+if statement syntax:
+--------------------------------------------------
+if [ condition ]
+then
+   commands
+fi
+--------------------------------------------------
+
+--------------------------------------------------
+
+12. SIMPLE IF CONDITION
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+num=10
+
+if [ $num -gt 5 ]
+then
+   echo "Number is greater than 5"
+fi
+--------------------------------------------------
+
+--------------------------------------------------
+
+13. IF ELSE CONDITION
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+age=18
+
+if [ $age -ge 18 ]
+then
+   echo "Eligible"
+else
+   echo "Not Eligible"
+fi
+--------------------------------------------------
+
+--------------------------------------------------
+
+14. COMPARISON OPERATORS
+
+-eq   Equal
+-ne   Not equal
+-gt   Greater than
+-lt   Less than
+-ge   Greater or equal
+-le   Less or equal
+
+--------------------------------------------------
+
+15. STRING CONDITIONS
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+name="linux"
+
+if [ "$name" == "linux" ]
+then
+   echo "Correct"
+fi
+--------------------------------------------------
+
+--------------------------------------------------
+
+16. LOOPS IN BASH
+
+Loops repeat commands multiple times.
+
+Types:
+- for loop
+- while loop
+
+--------------------------------------------------
+
+17. FOR LOOP
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+for i in 1 2 3 4 5
+do
+   echo $i
+done
+--------------------------------------------------
+
+Output:
+1
+2
+3
+4
+5
+
+--------------------------------------------------
+
+18. WHILE LOOP
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+count=1
+
+while [ $count -le 5 ]
+do
+   echo $count
+   count=$((count+1))
+done
+--------------------------------------------------
+
+--------------------------------------------------
+
+
+--------------------------------------------------
+
+20. FUNCTIONS IN BASH
+
+Example:
+--------------------------------------------------
+#!/bin/bash
+
+hello() {
+   echo "Hello DevOps"
+}
+
+hello
+--------------------------------------------------
+
+--------------------------------------------------
+
+21. DEBUGGING BASH SCRIPTS
+
+Method 1:
+bash -x script.sh
+
+Example:
+bash -x hello.sh
+
+--------------------------------------------------
+
+24. REAL-TIME DEVOPS EXAMPLES
+
+A. Backup Script
+- Automates backups
+
+B. Deployment Script
+- Deploy applications automatically
+
+C. Monitoring Script
+- Check CPU/memory usage
+
+D. Docker Automation
+- Start/stop containers
+
+--------------------------------------------------
+
+
+26. MEMORY TIPS
+
+#!/bin/bash
+-> Bash interpreter
+
+chmod +x
+-> Execute permission
+
+bash -x
+-> Debug mode
+
+--------------------------------------------------
+
+====================================================
