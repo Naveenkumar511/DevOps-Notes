@@ -1,0 +1,562 @@
+
+NETWORKING BASICS FOR DEVOPS 
+
+1. Introduction to Networking
+Networking is the process of connecting computers, servers, devices, and systems together to share data and resources.
+
+Examples:
+- Accessing websites
+- Connecting cloud servers
+- SSH remote access
+- Kubernetes communication
+
+--------------------------------------------------
+
+2. Types of Networks
+
+LAN (Local Area Network)
+- Covers small area
+- High speed
+- Example: Office WiFi
+
+WAN (Wide Area Network)
+- Covers large areas
+- Internet is the biggest WAN
+
+MAN (Metropolitan Area Network)
+- Covers city-level networks
+
+
+
+
+
+What is Network Topology?
+
+Network topology is the physical or logical arrangement of computers, switches, routers, and cables in a network.
+
+It defines:
+
+How devices are connected
+How data flows
+Network performance and reliability
+
+1. Bus Topology
+2. Star Topology 
+3. Mesh Topology
+4. Ring Topology
+5. Hybrid Topology
+--------------------------------------------------
+
+3. OSI Model
+
+Layer 7 - Application
+Layer 6 - Presentation
+Layer 5 - Session
+Layer 4 - Transport
+Layer 3 - Network
+Layer 2 - Data Link
+Layer 1 - Physical
+
+Important:
+- HTTP works in Application Layer
+- TCP works in Transport Layer
+- IP works in Network Layer
+
+
+=========================================================
+
+What are Network Devices?
+
+Network devices are hardware components used to connect, manage, and communicate between computers and networks.
+
+Purpose:
+- Data communication
+- Network management
+- Internet connectivity
+- Security
+
+Examples
+-----------
+
+1. Hub
+- Connects multiple devices
+- Sends data to all devices
+
+2. Switch
+- Connects devices in LAN
+- Uses MAC address
+- Sends data to correct device
+
+3. Router
+- Connects different networks
+- Provides internet access
+- Uses IP address
+
+4. Modem
+- Connects network to ISP
+- Converts signals
+
+5. Access Point (AP)
+- Provides WiFi connectivity
+
+6. Firewall
+- Secures network
+- Blocks unauthorized access
+
+7. Load Balancer
+- Distributes traffic across servers
+
+8. Repeater
+- Boosts weak network signals
+
+9. NIC (Network Interface Card)
+- Connects computer to network
+--------------------------------------------------
+
+TCP vs UDP – Difference
+
+--------------------------------------------------
+
+1. Definition
+
+TCP (Transmission Control Protocol)
+- Connection-oriented protocol
+- Reliable communication
+
+UDP (User Datagram Protocol)
+- Connectionless protocol
+- Faster communication
+
+--------------------------------------------------
+
+2. Major Differences
+
+Feature              		  TCP                         UDP
+--------------------------------------------------------------
+Connection    		Connection-oriented         Connectionless
+Reliability            	Reliable                    	Unreliable
+Data Delivery         	Guaranteed                  	Not guaranteed
+Speed                  	Slower                      	Faster
+Error Checking       	Yes                         		Basic
+Packet Order          	Maintained                  	Not maintained
+Acknowledgement   	Required                    	Not required
+Retransmission       	Yes                         		No
+Overhead              	High                        		Low
+
+--------------------------------------------------
+
+3. TCP Features
+
+- Establishes connection before communication
+- Uses 3-way handshake
+- Ensures data delivery
+- Resends lost packets
+- Reliable communication
+
+Examples:
+- HTTP
+- HTTPS
+- SSH
+- FTP
+- Email
+- Database connections
+
+--------------------------------------------------
+
+4. UDP Features
+
+- No connection setup
+- Faster communication
+- No retransmission
+- Suitable for real-time applications
+
+Examples:
+- Video streaming
+- Online gaming
+- DNS queries
+- Live streaming
+
+===============================================
+
+PROTOCOLS AND PORT NUMBERS 
+
+--------------------------------------------------
+
+1. What is a Protocol?
+
+A protocol is a set of rules used for communication between devices over a network.
+
+Examples:
+- HTTP
+- HTTPS
+- FTP
+- SSH
+- DNS
+
+--------------------------------------------------
+
+2. What is a Port Number?
+
+A port number identifies a specific service or application running on a server.
+
+Example:
+- Website -> Port 80
+- Secure Website -> Port 443
+
+Range:
+0 - 65535
+
+--------------------------------------------------
+
+3. Types of Ports
+
+Well-Known Ports:
+0 - 1023
+
+Registered Ports:
+1024 - 49151
+
+Dynamic/Private Ports:
+49152 - 65535
+
+--------------------------------------------------
+
+4. Important Protocols and Port Numbers
+
+HTTP (HyperText Transfer Protocol)
+Port: 80
+Usage:
+- Access websites
+
+--------------------------------------------------
+
+HTTPS (Secure HTTP)
+Port: 443
+Usage:
+- Secure website communication
+
+--------------------------------------------------
+
+SSH (Secure Shell)
+Port: 22
+Usage:
+- Remote Linux server access
+
+Command:
+ssh ubuntu@server-ip
+
+--------------------------------------------------
+
+FTP (File Transfer Protocol)
+Port: 21
+Usage:
+- File transfer
+
+--------------------------------------------------
+
+SFTP (Secure File Transfer Protocol)
+Port: 22
+Usage:
+- Secure file transfer using SSH
+
+--------------------------------------------------
+
+DNS (Domain Name System)
+Port: 53
+Usage:
+- Converts domain names into IP addresses
+
+--------------------------------------------------
+
+DHCP (Dynamic Host Configuration Protocol)
+Ports:
+67, 68
+Usage:
+- Assigns IP addresses automatically
+
+--------------------------------------------------
+
+SMTP (Simple Mail Transfer Protocol)
+Port: 25
+Usage:
+- Sending emails
+
+--------------------------------------------------
+
+POP3 (Post Office Protocol v3)
+Port: 110
+Usage:
+- Receiving emails
+
+--------------------------------------------------
+
+IMAP (Internet Message Access Protocol)
+Port: 143
+Usage:
+- Accessing emails from mail server
+
+--------------------------------------------------
+
+
+
+IP Addressing
+==========
+1. What is an IP Address?
+
+IP Address (Internet Protocol Address) is a unique address assigned to a device in a network.
+
+Purpose:
+- Identifies devices
+- Helps communication between systems
+
+Example:
+192.168.1.10
+
+Classes of IP Address
+--------------------------
+0.0.0.0
+0.0.0.1
+0.0.0.2
+.
+.
+.
+0.0.0.255
+0.0.1.0
+0.0.1.255
+
+12.0.0.0
+
+Class A 	1.0.0.0	 to 126.255.255.255   /8	N.H.H.H
+1 - 126
+	
+Large organizations
+			
+Class B	128.0.0.0 to 191.255.255.255	/16		N.N.H.H	
+128 - 191
+Medium sized organizations
+	
+Class C	192.0.0.0 to 223.255.255.255	/24      N.N.N.H
+192 - 223 
+Small organizations
+Class D 	224.0.0.0 to 239.255.255.255		Multicasting
+224 - 239
+Class E	240.0.0.0 to 255.255.255.255		Research and experimental purposes
+240 - 255
+127.0.0.1 - Loopback Address
+--------------------------------------------------
+
+2. Types of IP Address
+
+A. Public IP Address
+- Accessible through internet
+- Assigned by ISP
+- Unique globally
+
+Example:
+49.205.x.x
+
+Usage:
+- Websites
+- Cloud servers
+- Internet communication
+
+--------------------------------------------------
+
+B. Private IP Address
+- Used inside local/internal networks
+- Not directly accessible from internet
+
+Private IP Ranges:
+10.0.0.0     - 10.255.255.255 1 - 126
+172.16.0.0  - 172.31.255.255		128 - 191
+192.168.0.0 - 192.168.255.255   192 - 223
+
+Usage:
+- Home WiFi
+- Office networks
+- Internal cloud networks
+
+--------------------------------------------------
+
+3. Static vs Dynamic IP
+
+Static IP:
+- Fixed IP address
+- Manually configured
+- Mostly used for servers
+
+Dynamic IP:
+- Automatically assigned using DHCP
+- Changes periodically
+
+--------------------------------------------------
+
+4. IPv4 and IPv6
+
+A. IPv4
+- 32-bit address
+- Most commonly used
+
+Example:
+192.168.1.1
+00000000.00000000.00000000.00000000
+
+Format:
+4 octets separated by dots
+
+--------------------------------------------------
+
+B. IPv6
+- 128-bit address
+- Developed to solve IPv4 shortage
+
+Example:
+2001:0db8:85a3::8a2e:0370:7334
+
+Advantages:
+- Large address space
+- Better security
+- Improved routing
+
+===================================
+
+Network
+-----------
+192.168.0.0/24  
+no of ip 256
+
+192.168.0.0  		- Network address
+192.168.0.1		- 1st valid ip
+192.168.0.2
+.
+.
+192.168.0.254		- Last valid ip	
+192.168.0.255		- Broadcast address
+
+
+254 c
+500 b - 65536
+
+CIDR - Classless Inter Domain Routing
+/24
+/25
+
+10.0.0.0/24
+10.0.0.0 
+10.0.0.1
+10.0.0.254
+10.0.0.255
+
+
+SUBNETTING & CIDR 
+
+--------------------------------------------------
+
+1. What is Subnetting?
+
+Subnetting is the process of dividing a large network into smaller networks called subnets.
+
+Purpose:
+- Better network management
+- Improved security
+- Efficient IP usage
+- Reduced network traffic
+
+--------------------------------------------------
+
+2. Why Subnetting is Important?
+
+Advantages:
+- Improves performance
+- Reduces broadcast traffic
+- Better security
+- Efficient IP allocation
+- Easier troubleshooting
+
+Used in:
+- AWS VPC
+- Kubernetes
+- Enterprise Networks
+- Cloud Infrastructure
+
+--------------------------------------------------
+
+3. What is a Subnet?
+
+A subnet is a smaller network created from a larger network.
+
+Example:
+Network:
+192.168.1.0/24
+
+Can be divided into:
+192.168.1.0/25
+192.168.1.128/25
+
+--------------------------------------------------
+
+4. What is CIDR?
+
+CIDR = Classless Inter-Domain Routing
+
+CIDR notation represents:
+IP Address + Network Bits
+
+Example:
+192.168.1.0/24
+
+Meaning:
+- 24 bits are network bits
+- Remaining 8 bits are host bits
+
+--------------------------------------------------
+
+5. CIDR Format
+
+Format:
+IP_Address/Network_Bits
+
+Example:
+10.0.0.0/16
+
+--------------------------------------------------
+
+6. Understanding Network Bits
+
+IPv4 Address:
+32 bits total
+
+Example:
+/24
+
+Means:
+24 bits -> Network
+8 bits -> Hosts
+
+--------------------------------------------------
+
+7. Common CIDR Values
+
+CIDR              Number of Hosts	Number of IP
+------------------------------------------------------------------------
+/8                 	16 Million			16 Million
+/16               	65,534			65,536
+/24              	254				256
+/25           	126				128
+/26            	62				64
+/27           	30				32
+/28            	14				16
+/29            	6				8
+/30            	2				4
+
+Networking commands
+---------------------------
+	ping
+Windows
+	ipconfig
+	ipconfig/all
+	getmac
+Linux
+	ifconfig
+
+=================================================================================
