@@ -603,8 +603,8 @@ naveen
 
 --------------------------------------------------
 Creating a user
-	useradd  username
-		eg: useradd mathu
+	useradd  -m username
+		eg: useradd -m mathu
 Modify the user
 	usermod 
 		eg: usermod -u 8000 username

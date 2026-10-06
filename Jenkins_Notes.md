@@ -11,7 +11,7 @@ applications.
 ## Traditional Workflow
 
 ``` text
-Developer -> Build -> Test -> Deploy -> Production
+Developer ->Build - > Test -> Deploy -> Production
 ```
 
 ## CI/CD Workflow
